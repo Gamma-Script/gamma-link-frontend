@@ -1,0 +1,27 @@
+<!--Buscador-->
+<form class="form-inline d-flex justify-content-center md-form form-sm mt-4">
+    <i class="fas fa-search" aria-hidden="true"></i>
+    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Buscar" git aria-label="Search">
+  </form>
+
+<div class="container mt-2 row">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="row container mt-3 mb-5 justify-content-left">
+    <div *ngFor="let categorias of categorias" class="card ml-4 mt-4" style="width: 21rem;">
+        <img src="{{categorias.imagen}}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{categorias.nombreCategoria}}</h5>
+            <hr>
+            <h6 class="card-subtitle mb-2 text-muted">{{categorias.descripcionCategoria}}</h6>
+        </div>
+
+        <div class="card-footer text-right">
+            <!--Se agregara solo si es un cliente proveedor
+            <button class="btn btn-primary">Editar</button>
+            <button class="btn ml-2 btn-danger">Eliminar</button>
+            -->
+        </div>
+    </div>
+</div>
