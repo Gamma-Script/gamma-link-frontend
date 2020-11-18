@@ -48,7 +48,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link">Inicia Sesion</a>
-                                    <a class="nav-link">Registrarse</a>
+                                    <a class="nav-link" [routerLink] = "['content/new']" data-toggle="modal" data-target="#newUserModal">Registrarse</a>
                                 </nav>
                             </div>
                            
@@ -61,10 +61,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Categorias
                             </a>
-                            <a class="nav-link">
-                              <div class="sb-nav-link-icon"  ><i class="fas fa-table"></i></div>
+                            <a class="nav-link" [routerLink]="['productos']">
+                              <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                               Productos
-                          </a>
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
