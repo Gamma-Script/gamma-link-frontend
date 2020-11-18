@@ -10,7 +10,7 @@ import { ProductoService } from 'src/app/services/producto.service';
 export class ProductoContainerComponent implements OnInit {
 
   productos : Producto[];
-
+  isCliente : boolean;
   constructor(
     private productoService : ProductoService
   ) { }

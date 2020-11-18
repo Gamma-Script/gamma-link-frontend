@@ -48,18 +48,38 @@
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="isCliente=true">Search</button>
     </form>
   </div>
 </nav>
 
-<div class="container mt-4 row"> 
-</div>
 
-<div ngif='isCliente.user' class="row container mt-4 mb-4">
+<!-- lista de productos
+
+<div *ngIf="isCliente" class="row container mt-4 mb-4">
+  <div *ngFor="let producto of productos" class="card" style="width: 18rem;">
+      <div class="card-body">     
+       <img src= {{producto.imagen}} class="card-img-top" alt="...">
+        <h5 class="card-title">{{producto.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{producto.id}}</h6><hr>
+        <p class="card-text">{{producto.marca}}</p>
+        <p class="card-text">{{producto.categoria}}</p>
+        <p class="card-text">{{producto.descripcion}}</p>
+        <p class="card-number">{{producto.precio}}</p>                 
+      </div>
+      <div class="card-footer text-right">
+          <button class="btn btn-success" type="submit">Ver</button>
+          <button class="btn ml-2 btn-danger">Agregar</button>
+      </div>
+    </div>
+</div>
+-->
+
+<!-- lista de productos proveedor -->
+
+<div class="row container mt-4 mb-4">
     <div *ngFor="let producto of productos" class="card" style="width: 18rem;">
-        <div class="card-body">
-         <!-- <h5 class="card-title">{{animal.name}}</h5> -->
+        <div class="card-body">     
          <img src= {{producto.imagen}} class="card-img-top" alt="...">
           <h5 class="card-title">{{producto.name}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{producto.id}}</h6><hr>
@@ -75,11 +95,11 @@
       </div>
 </div>
 
+<!-- lista de productos cliente -->
 
 <div class="row container mt-4 mb-4">
   <div *ngFor="let producto of productos" class="card" style="width: 18rem;">
       <div class="card-body">
-       <!-- <h5 class="card-title">{{animal.name}}</h5> -->
        <img src= {{producto.imagen}} class="card-img-top" alt="...">
         <h5 class="card-title">{{producto.name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{producto.id}}</h6><hr>
@@ -90,7 +110,7 @@
       </div>
       <div class="card-footer text-right">
           <button class="btn btn-success" type="submit">Ver</button>
-          <button class="btn ml-2 btn-danger">Editar</button>
+          <button class="btn ml-2 btn-danger">Agregar</button>
       </div>
     </div>
 </div>
