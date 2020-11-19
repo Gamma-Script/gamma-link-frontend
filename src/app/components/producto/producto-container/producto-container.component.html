@@ -86,7 +86,7 @@
           <p class="card-text">{{producto.marca}}</p>
           <p class="card-text">{{producto.categoria}}</p>
           <p class="card-text">{{producto.descripcion}}</p>
-          <p class="card-number">{{producto.precio}}</p>                 
+          <p class="card-number">{{producto.precio | money}}</p>                 
         </div>
         <div class="card-footer text-right">
             <button class="btn btn-success" type="submit">Ver</button>
@@ -100,17 +100,19 @@
 <div class="row container mt-4 mb-4">
   <div *ngFor="let producto of productos" class="card" style="width: 18rem;">
       <div class="card-body">
-       <img src= {{producto.imagen}} class="card-img-top" alt="...">
+        <img src= {{producto.imagen}} class="card-img-top" alt="...">
         <h5 class="card-title">{{producto.name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{producto.id}}</h6><hr>
         <p class="card-text">{{producto.marca}}</p>
         <p class="card-text">{{producto.categoria}}</p>
         <p class="card-text">{{producto.descripcion}}</p>
-        <p class="card-number">{{producto.precio}}</p>                 
+        <p class="card-number">{{producto.precio | money}}</p>                 
       </div>
       <div class="card-footer text-right">
           <button class="btn btn-success" type="submit">Ver</button>
-          <button class="btn ml-2 btn-danger">Agregar</button>
+          <button (click)="pasar(producto)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Agregar</button>
       </div>
     </div>
 </div>
+<app-cotizacion-container [product]="p"></app-cotizacion-container>
+<router-outlet></router-outlet>

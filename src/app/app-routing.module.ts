@@ -4,8 +4,10 @@ import { ProductoContainerComponent } from '../app/components/producto/producto-
 import { CuentaContainerComponent } from './components/cuenta/cuenta-container/cuenta-container.component';
 import { CuentaFormComponent } from './components/cuenta/cuenta-form/cuenta-form.component';
 import { ListadoCategoriasComponent } from './components/categorias/listado-categorias/listado-categorias.component';
+import { CotizacionContainerComponent } from './components/producto/cotizacion-container/cotizacion-container.component';
 
 const routes: Routes = [
+  {path: 'productos/cotizados' ,component: CotizacionContainerComponent},
 {path : 'productos', component : ProductoContainerComponent},
 {path: 'categorias', component : ListadoCategoriasComponent},
 {path: 'content', component : CuentaContainerComponent

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from 'src/app/models/producto';
+import { Producto } from '../../../models/producto';
 import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
@@ -9,8 +9,10 @@ import { ProductoService } from 'src/app/services/producto.service';
 })
 export class ProductoContainerComponent implements OnInit {
 
-  productos : Producto[];
-  isCliente : boolean;
+  productos: Producto[];
+  isCliente: boolean;
+  p: Producto = null;
+
   constructor(
     private productoService : ProductoService
   ) { }
@@ -24,12 +26,10 @@ export class ProductoContainerComponent implements OnInit {
     this.productos = this.productoService.getProductos();
   }
 
-
-
-
-
-
-
+  //metodo para pasar el producto
+  pasar(prod: Producto): void{
+    this.p = prod;
+  }
 
   
 /*
