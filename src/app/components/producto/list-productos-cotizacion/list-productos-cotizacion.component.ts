@@ -8,7 +8,7 @@ import { CotizacionService } from '../../../services/cotizacion.service';
   styleUrls: ['./list-productos-cotizacion.component.css']
 })
 export class ListProductosCotizacionComponent implements OnInit {
-
+  
   //atributos
   productoC: ProductoCotizado[] = this.serviceProdC.getProductosCotizacion();
 
@@ -17,4 +17,14 @@ export class ListProductosCotizacionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //metodo para verificar si hay productos en la lista de cotizacion o no
+  isEmpty(): boolean{
+    if(this.productoC.length === 0){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+   
 }
