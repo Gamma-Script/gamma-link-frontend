@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 //////////////////////////////////////////////////////////////////////
-import { Proveedor } from 'src/app/models/proveedor';
+import { Proveedor } from 'src/app/models/Proveedor';
 import{ProveedorService} from '../../../services/proveedor.service'
 //////////////////////////////////////////////////////////////////////
 @Component({

@@ -1,4 +1,4 @@
-import { Proveedor } from './proveedor'
+import { Proveedor } from './Proveedor'
 
 export let proveedoresData :Proveedor[];
 

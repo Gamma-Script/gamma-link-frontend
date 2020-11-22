@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Proveedor } from 'src/app/models/proveedor';
+import { Proveedor } from 'src/app/models/Proveedor';
 import { Puntuacion } from 'src/app/models/puntuacion';
 import {ProveedorService} from '../../../services/proveedor.service';
 import {PuntuacionService} from '../../../services/puntuacion.service';

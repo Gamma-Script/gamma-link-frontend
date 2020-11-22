@@ -1,5 +1,5 @@
 import { ClienteRegistrado } from './cliente-registrado';
-import { Proveedor } from './proveedor';
+import { Proveedor } from './Proveedor';
 
 export class Puntuacion {
 constructor(public idPuntuacion:number,public proveedor:Proveedor, 

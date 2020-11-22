@@ -1,0 +1,18 @@
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Imagen</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pc of productoC">
+        <th scope="row"><img src={{pc.producto.imagen}} alt="imagen" width="100"></th>
+        <td> {{ pc.producto.name }} </td>
+        <td> {{ pc.cantidad }} </td>
+        <td> {{ pc.precioTotal | money }} </td>
+    </tr>
+    </tbody>
+  </table>

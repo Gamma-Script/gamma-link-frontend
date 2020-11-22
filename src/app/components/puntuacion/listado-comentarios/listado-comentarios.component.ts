@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Puntuacion } from 'src/app/models/puntuacion';
 ///////para pruebas se borrara despues///////////////////////////////////
-import { Proveedor } from 'src/app/models/proveedor';
+import { Proveedor } from 'src/app/models/Proveedor';
 import { PuntuacionService } from 'src/app/services/puntuacion.service';
 /////////////////////////////////////////////////////////////////////////
 @Component({

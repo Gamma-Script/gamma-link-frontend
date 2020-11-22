@@ -1,0 +1,82 @@
+<div class="modal" id="newUserModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Crear nueva cuenta</h5>
+          <button type="button" class="close btn-lg" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup] = "checkForm" (ngSubmit) = "onSubmit(checkForm.value)">
+                <div class="form-row">
+                 <div class="form-group col-md-1"></div>
+                    
+                    <div class="form-group col-md-2">
+                        <div class="container-fluid">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    <svg width="5em" height="5em" align="left" viewBox="0 0 16 16" class="bi bi-person-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                      </svg> 
+                </div>
+                   </div>
+                    <div class="form-group col-md-9">
+                            <label for="Nombre">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre" id="Nombre" aria-describedby="Nombredescripcion">
+                            <small id="Nombredescripcion" class="form-text text-muted">Nombre completo con apellidos</small>
+                            <small *ngIf = "checkForm.get('nombre').touched && checkForm.get('nombre').invalid" class = "ml-2 text-danger"> Nombre requerido</small>
+                            <br>
+                            <br>
+                            <label for="usuario">Usuario</label>
+                            <input type="text" class="form-control" formControlName="nUsuario" id="usuario"ria-describedby="usuariodescripcion">
+                            <small id="usuariodescripcion" class="form-text text-muted">Nombre de usuario</small>
+                            <small *ngIf = "checkForm.get('nUsuario').touched && checkForm.get('nUsuario').invalid" class = "ml-1 text-danger"> Nombre de usuario requerido</small>
+                            <br>
+                            <br>
+                            <label for="correoE">Correo electronico</label>
+                            <input type="email" class="form-control" formControlName="correo" id="correoE">
+                            <small *ngIf = "checkForm.get('correo').touched && checkForm.get('correo').invalid" class = "ml-2 text-danger"> Correo electronico requerido o invalido</small>
+                            <br> 
+                            <br>
+                            <label for="contraseña">Contraseña</label>
+                            <input type="password" class="form-control" formControlName="contraseña" id="contraseña">
+                            <small *ngIf = "checkForm.get('contraseña').touched && checkForm.get('contraseña').invalid" class = "ml-2 text-danger">Contraseña requerida</small>
+                            <br>
+                            <br>
+                            <label for="cContraseña">Confimar contraseña</label>
+                            <input type="password" class="form-control"formControlName="cContraseña" id="cContraseña">
+                            <small *ngIf = "checkForm.get('cContraseña').touched && checkForm.get('cContraseña').invalid" class = "ml-2 text-danger">Necesario que verifique la contraseña</small>
+                            <br>   
+                            <br>
+                            <label for="tipoUsuario">Escoga el tipo de usuario</label>
+                            <select id="tipoUsuario" class="form-control" formControlName="tipo">
+                              <option selected>Cliente</option>
+                              <option>Proveedor</option>
+                            </select>
+                            <small *ngIf = "checkForm.get('tipo').touched && checkForm.get('tipo').invalid" class = "ml-2 text-danger">Escoga el tipo de cuenta que desea</small>
+                   </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-lg" (click) = "clear()" data-dismiss="modal">Cerrar</button>
+                  <button type="submit" class="btn btn-success btn-lg" [disabled] = "!checkForm.valid" >Registrar usuario</button>
+                </div>
+              </form>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
