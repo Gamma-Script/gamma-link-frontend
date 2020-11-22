@@ -1,0 +1,50 @@
+
+<form [formGroup]="formulario" >
+    <div class="form-group row">
+      <div class="col">
+        <table class="table" >
+          <thead>
+            <tr>
+              <th scope="col">Usuario</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripcion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{proveedor.usuario}}</td>
+              <td>{{proveedor.nombreProveedor}}</td>
+              <td>{{proveedor.descripcionProveedor}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="form-group row">
+        <div class="col">
+            <label >¿Cuantas estrellas le da?</label>
+        </div>
+        <div class="col">
+            <ngb-rating [max]="5" [(rate)]="calificacion" [readonly]="false" ></ngb-rating>
+            <p>Rate:{{calificacion}} </p>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col">
+            <label >Danos tu opinion</label>
+            <textarea class="form-control"  rows="5" formControlName="comentario"></textarea>
+            <small *ngIf="formulario.controls.comentario.touched && formulario.controls.comentario.invalid" class="ml-2 text-danger">No puede hacer una puntuacion sin comentario</small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col">
+            <button type="button" class="btn btn-danger ml-4">Cancelar</button>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid">Enviar</button>
+        </div>
+    </div>
+</form>
+

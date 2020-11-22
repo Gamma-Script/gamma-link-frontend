@@ -1,0 +1,25 @@
+  <div  class="list-group scroll-y scrollbar">
+
+    <div class="list-group-item" *ngFor="let comentario of comentarios2">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{comentario.clienteRegistrado.nombres}}</h5>
+        <small>3 days ago</small>
+      </div>
+      <div>
+        <p class="mb-1">{{comentario.comentario}}</p>
+        <ngb-rating [max]="5" [(rate)]="comentario.calificacion" [readonly]="true"></ngb-rating>
+      </div>
+    </div>
+  <!-- 
+    <div class="list-group-item">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">List group item heading</h5>
+        <small>3 days ago</small>
+      </div>
+      <div>
+        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+      </div>
+    </div>
+    --> 
+
+  </div>
