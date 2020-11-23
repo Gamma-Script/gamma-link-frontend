@@ -17,6 +17,8 @@ import { ListProductosCotizacionComponent } from './components/producto/list-pro
 import { MoneyPipe } from './pipes/money.pipe';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
+import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CotizacionContainerComponent,
     FormProductosCotizacionComponent,
     ListProductosCotizacionComponent,
-    MoneyPipe
+    MoneyPipe,
+    AnuncioListComponent,
+    AnuncioContentComponent
   ],
   imports: [
     BrowserModule,
