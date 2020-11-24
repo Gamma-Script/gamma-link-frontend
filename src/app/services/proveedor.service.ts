@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {proveedoresData} from '../models/prueba-proveedor-data'
 import Swal from 'sweetalert2';
-import { Proveedor } from '../models/Proveedor';
+import { Proveedor } from '../models/proveedor';
 
 @Injectable({
   providedIn: 'any'

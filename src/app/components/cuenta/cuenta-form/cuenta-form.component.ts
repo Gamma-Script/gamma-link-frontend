@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cliente } from 'src/app/models/Cliente';
-import { Proveedor } from 'src/app/models/Proveedor';
-import { Usuario } from 'src/app/models/Usuario';
+import { Proveedor } from 'src/app/models/proveedor';
+import { Usuario } from 'src/app/models/usuario';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ProveedorService } from 'src/app/services/proveedor.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
