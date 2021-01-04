@@ -23,7 +23,15 @@ export class ProductoContainerComponent implements OnInit {
   }
 
   getProductos(){
-    this.productos = this.productoService.getProductos();
+    this.productoService.getProductos().subscribe(
+      productos => {
+        this.productos = productos;
+        console.log(this.productos);
+      },
+      (error : any) =>{
+        console.log(error);
+      }
+    );
   }
 
   //metodo para pasar el producto

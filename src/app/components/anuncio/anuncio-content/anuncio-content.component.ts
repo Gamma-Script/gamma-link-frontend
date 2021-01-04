@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AnuncioService } from 'src/app/services/anuncio.service';
 
 @Component({
   selector: 'app-anuncio-content',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnuncioContentComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private anuncioService : AnuncioService
+  ) { }
 
   ngOnInit(): void {
   }

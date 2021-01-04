@@ -1,30 +1,33 @@
 import { Injectable } from '@angular/core';
-import { anuncios } from '../components/anuncio/anuncio-list/anuncio-data';
 import { Anuncio } from '../models/anuncio';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { urlBase } from './global';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
 export class AnuncioService {
 
-  constructor() { }
+  private url: string = `${urlBase}/proveedor/anuncios`;
 
-  getsAnuncios():Anuncio[]
+  constructor(
+    private http : HttpClient
+  ) { }
+
+  getsAnuncios():Observable<Anuncio[]>
   {
-    return anuncios;
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+
+    return this.http.get<Anuncio[]>(`${this.url}`,{ headers: headers});
   } 
    
   update(anuncio :Anuncio)
   {
 
-    for(var i = 0; i < anuncios.length; i++)
-    {
-      if(anuncio.idAnuncio == anuncios[i].idAnuncio)
-      {
-        anuncios[i] = anuncio
-      }
-    }
-
-   console.log(anuncio) 
   }
 }

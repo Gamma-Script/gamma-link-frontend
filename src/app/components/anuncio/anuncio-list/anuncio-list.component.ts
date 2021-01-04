@@ -11,12 +11,22 @@ import Swal from 'sweetalert2';
 export class AnuncioListComponent implements OnInit {
 
   anuncios : Anuncio[];
-  constructor(private anuncioService : AnuncioService) { }
+  constructor(
+    private anuncioService : AnuncioService
+  ) { }
 
 
   ngOnInit(): void {
-    this.anuncios = this.anuncioService.getsAnuncios();
-    console.log(this.anuncios);
+    this.anuncioService.getsAnuncios().subscribe(
+      anuncios => {
+        this.anuncios = anuncios;
+        console.log(this.anuncios);
+      },
+      (error : any) => {
+        console.log(error);
+      }
+    )
+    
   }
 
   darDeBaja(anuncio:Anuncio)

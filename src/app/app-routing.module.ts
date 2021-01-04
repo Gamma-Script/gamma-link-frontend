@@ -13,25 +13,27 @@ import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-
 
 const routes: Routes = [
   //para probar el caso de uso puntuar proveedor poner de un solo en la url   /puntuarProveedor
-  {path: 'puntuarProveedor',component:PuntuarProveedorContenedorComponent,
-  children:[{path:'',component:ListadoComentariosComponent},{path:'',component:FormularioComponent}]
+  {
+    path: 'puntuar-proveedor', component: PuntuarProveedorContenedorComponent,
+    children: [{ path: '', component: ListadoComentariosComponent }, { path: '', component: FormularioComponent }]
   },
-  {path: 'productos/cotizados' ,component: CotizacionContainerComponent},
-  {path : 'productos', component : ProductoContainerComponent},
-  {path: 'categorias', component : ListadoCategoriasComponent},
-  {path: 'content', component : CuentaContainerComponent
-  ,
-  children: [{
-    path: 'new', component: CuentaFormComponent
-  }]
+  { path: 'productos/cotizados', component: CotizacionContainerComponent },
+  { path: 'productos', component: ProductoContainerComponent },
+  { path: 'categorias', component: ListadoCategoriasComponent },
+  {
+    path: 'content', component: CuentaContainerComponent,
+    children: [{
+      path: 'new', component: CuentaFormComponent
+    }]
   },
-  {path : 'anuncioContainer', component : AnuncioContentComponent,
-  children:[{
-    path : 'list', component : AnuncioListComponent
-  }]
-}
+  {
+    path: 'anuncio', component: AnuncioContentComponent,
+    children: [{
+      path: 'list', component: AnuncioListComponent
+    }]
+  }
 
- // {path : '', pathMatch: 'full',redirectTo: 'puntuarProveedor'}
+  // {path : '', pathMatch: 'full',redirectTo: 'puntuarProveedor'}
 ];
 
 @NgModule({
