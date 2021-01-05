@@ -8,6 +8,9 @@ import { CuentaContainerComponent } from './components/cuenta/cuenta-container/c
 import { CuentaFormComponent } from './components/cuenta/cuenta-form/cuenta-form.component';
 import { ListadoCategoriasComponent } from './components/categorias/listado-categorias/listado-categorias.component';
 import { CotizacionContainerComponent } from './components/producto/cotizacion-container/cotizacion-container.component';
+import { GestionarProductosContainerComponent } from './components/producto/gestionar-productos-container/gestionar-productos-container.component';
+import { EditarProductoComponent } from './components/producto/editar-producto/editar-producto.component'
+import { CrearProductoComponent } from './components/producto/crear-producto/crear-producto.component'
 
 const routes: Routes = [
   //para probar el caso de uso puntuar proveedor poner de un solo en la url   /puntuarProveedor
@@ -17,6 +20,9 @@ const routes: Routes = [
   {path: 'productos/cotizados' ,component: CotizacionContainerComponent},
   {path : 'productos', component : ProductoContainerComponent},
   {path: 'categorias', component : ListadoCategoriasComponent},
+  {path: 'gestionar-productos' ,component: GestionarProductosContainerComponent},
+  {path: 'editar-producto', component: EditarProductoComponent},
+  {path: 'agregar-producto', component: CrearProductoComponent},
   {path: 'content', component : CuentaContainerComponent
   ,
   children: [{

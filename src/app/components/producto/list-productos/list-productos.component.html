@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Categoría</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <th scope="row"> {{ producto.name }} </th>
+        <td> {{ producto.descripcion }} </td>
+        <td> {{ producto.precio | money }} </td>
+        <td> {{ producto.marca }} </td>
+        <td> {{ producto.categoria }} </td>
+        <td>
+            <button type="button" class="btn btn-warning" (click)="edithProducto(producto)"><i class="fas fa-pencil-alt"></i></button>
+            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<router-outlet></router-outlet>
