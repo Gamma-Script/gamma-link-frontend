@@ -21,6 +21,9 @@ import { GestionarProductosContainerComponent } from './components/producto/gest
 import { ListProductosComponent } from './components/producto/list-productos/list-productos.component';
 import { CrearProductoComponent } from './components/producto/crear-producto/crear-producto.component';
 import { EditarProductoComponent } from './components/producto/editar-producto/editar-producto.component';
+import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
+import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { EditarProductoComponent } from './components/producto/editar-producto/e
     GestionarProductosContainerComponent,
     ListProductosComponent,
     CrearProductoComponent,
-    EditarProductoComponent
+    EditarProductoComponent,
+    AnuncioListComponent,
+    AnuncioContentComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,8 @@ import { EditarProductoComponent } from './components/producto/editar-producto/e
     ReactiveFormsModule,
     FormsModule,
     SimpleNotificationsModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

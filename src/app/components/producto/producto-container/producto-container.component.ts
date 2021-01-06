@@ -11,7 +11,7 @@ export class ProductoContainerComponent implements OnInit {
 
   productos: Producto[];
   isCliente: boolean;
-  p: Producto = null;
+  p: Producto;
 
   constructor(
     private productoService : ProductoService
@@ -23,7 +23,15 @@ export class ProductoContainerComponent implements OnInit {
   }
 
   getProductos(){
-    this.productos = this.productoService.getProductos();
+    this.productoService.getProductos().subscribe(
+      productos => {
+        this.productos = productos;
+        console.log(this.productos);
+      },
+      (error : any) =>{
+        console.log(error);
+      }
+    );
   }
 
   //metodo para pasar el producto

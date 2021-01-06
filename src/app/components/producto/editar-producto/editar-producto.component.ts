@@ -13,7 +13,7 @@ export class EditarProductoComponent implements OnInit {
 
   checkForm: FormGroup;
   submitted: boolean = false;
-  producto : Producto = this.edithProducto();
+  producto : Producto;
 
   constructor(private router: Router, private fb: FormBuilder, private ps: ProductoService) { 
     this.checkForm =  this.fb.group({
@@ -27,6 +27,7 @@ export class EditarProductoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.edithProducto();
   }
 
   //obtencion de los errores
@@ -63,10 +64,35 @@ export class EditarProductoComponent implements OnInit {
     }
   }
 
+  //metodo para modificar el observable y devolver la lista de productos
+  getProducto(ident: string){
+    this.ps.getProducto(ident).subscribe(
+      producto => {
+        this.producto = producto;
+        console.log(this.producto);
+      },
+      (error : any) =>{
+        console.log(error);
+      }
+    );
+  }
+
+  updateProducto(producto: Producto){
+    this.ps.updateProducto(producto).subscribe(
+      producto => {
+        this.producto = producto;
+        console.log(this.producto);
+      },
+      (error : any) =>{
+        console.log(error);
+      }
+    );
+  }
+
   //metodo que recibe el objeto producto
   edithProducto(){
     let id = localStorage.getItem("id");
-    return this.ps.getProducto(id);
+    return this.getProducto(id);
   }
 
   //Metodo del para cancelar y volver a la lista de productos
@@ -77,7 +103,7 @@ export class EditarProductoComponent implements OnInit {
 
   //Metodo para guardar cambios y retornar a la lista de productos
   guardarProducto(producto: Producto){
-    this.ps.updateProducto(producto);
+    this.updateProducto(producto);
     this.router.navigate(['gestionar-productos']);
   }
 }

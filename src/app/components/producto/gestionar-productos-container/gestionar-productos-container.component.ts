@@ -10,14 +10,27 @@ import { Producto } from '../../../models/producto';
 })
 export class GestionarProductosContainerComponent implements OnInit {
   
-  products: Producto[] = this.pService.getProductos();
+  products: Producto[];
 
   constructor(private router: Router, private pService: ProductoService) { }
 
   ngOnInit(): void {
+    this.getProductos();
   }
 
-    addProducto(){
-        this.router.navigate(["agregar-producto"]);
-    }
+  addProducto(){
+   this.router.navigate(["agregar-producto"]);
+  }
+
+  getProductos(){
+    this.pService.getProductos().subscribe(
+      productos => {
+        this.products = productos;
+        console.log(this.products);
+      },
+      (error : any) =>{
+        console.log(error);
+      }
+    );
+  }
 }

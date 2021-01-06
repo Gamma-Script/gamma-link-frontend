@@ -11,11 +11,13 @@ import { CotizacionContainerComponent } from './components/producto/cotizacion-c
 import { GestionarProductosContainerComponent } from './components/producto/gestionar-productos-container/gestionar-productos-container.component';
 import { EditarProductoComponent } from './components/producto/editar-producto/editar-producto.component'
 import { CrearProductoComponent } from './components/producto/crear-producto/crear-producto.component'
+import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
+import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
 
 const routes: Routes = [
   //para probar el caso de uso puntuar proveedor poner de un solo en la url   /puntuarProveedor
-  {path: 'puntuarProveedor',component:PuntuarProveedorContenedorComponent,
-  children:[{path:'',component:ListadoComentariosComponent},{path:'',component:FormularioComponent}]
+  {path: 'puntuar-proveedor', component: PuntuarProveedorContenedorComponent,
+    children: [{ path: '', component: ListadoComentariosComponent }, { path: '', component: FormularioComponent }]
   },
   {path: 'productos/cotizados' ,component: CotizacionContainerComponent},
   {path : 'productos', component : ProductoContainerComponent},
@@ -24,12 +26,25 @@ const routes: Routes = [
   {path: 'editar-producto', component: EditarProductoComponent},
   {path: 'agregar-producto', component: CrearProductoComponent},
   {path: 'content', component : CuentaContainerComponent
-  ,
-  children: [{
-    path: 'new', component: CuentaFormComponent
-  }]
+    ,
+    children: [{
+      path: 'new', component: CuentaFormComponent}
+    ]
+  },
+  {
+    path: 'content', component: CuentaContainerComponent,
+    children: [{
+      path: 'new', component: CuentaFormComponent
+    }]
+  },
+  {
+    path: 'anuncio', component: AnuncioContentComponent,
+    children: [{
+      path: 'list', component: AnuncioListComponent
+    }]
   }
- // {path : '', pathMatch: 'full',redirectTo: 'puntuarProveedor'}
+
+  // {path : '', pathMatch: 'full',redirectTo: 'puntuarProveedor'}
 ];
 
 @NgModule({

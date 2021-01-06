@@ -13,6 +13,7 @@ export class CrearProductoComponent implements OnInit {
 
   checkForm: FormGroup;
   submitted: boolean = false;
+  producto: Producto;
 
   constructor(private router: Router, private fb: FormBuilder, private ps: ProductoService) { 
     this.checkForm =  fb.group({
@@ -66,9 +67,21 @@ export class CrearProductoComponent implements OnInit {
     this.router.navigate(["gestionar-productos"])
   }
 
+  addProducto(producto: Producto){
+    this.ps.addProducto(producto).subscribe(
+      producto => {
+        this.producto = producto;
+        console.log(this.producto);
+      },
+      (error : any) =>{
+        console.log(error);
+      }
+    );
+  }
+
   //Metodo para crear un nuevo producto y volver a la lista de productos
   crearProducto(producto: Producto){
-    this.ps.addProducto(producto);
+    this.addProducto(producto);
     this.router.navigate(["gestionar-productos"])
   }
 }
