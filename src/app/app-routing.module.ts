@@ -14,6 +14,7 @@ import { CrearProductoComponent } from './components/producto/crear-producto/cre
 import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
 import { EditarCategoriaComponent } from './components/categorias/editar-categoria/editar-categoria.component';
+import { CrearCategoriaComponent } from './components/categorias/crear-categoria/crear-categoria.component';
 
 const routes: Routes = [
   //para probar el caso de uso puntuar proveedor poner de un solo en la url   /puntuarProveedor
@@ -22,7 +23,7 @@ const routes: Routes = [
   },
   {path: 'productos/cotizados' ,component: CotizacionContainerComponent},
   {path : 'productos', component : ProductoContainerComponent},
-  {path: 'categorias', component : ListadoCategoriasComponent,children:[{path:'',component:EditarCategoriaComponent}]},
+  {path: 'categorias', component : ListadoCategoriasComponent,children:[{path:'',component:EditarCategoriaComponent},{path:'',component:CrearCategoriaComponent}]},
   {path: 'gestionar-productos' ,component: GestionarProductosContainerComponent},
   {path: 'editar-producto', component: EditarProductoComponent},
   {path: 'agregar-producto', component: CrearProductoComponent},
