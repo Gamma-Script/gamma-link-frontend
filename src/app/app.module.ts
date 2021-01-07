@@ -24,6 +24,7 @@ import { EditarProductoComponent } from './components/producto/editar-producto/e
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
 import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditarCategoriaComponent } from './components/categorias/editar-categoria/editar-categoria.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     CrearProductoComponent,
     EditarProductoComponent,
     AnuncioListComponent,
-    AnuncioContentComponent
+    AnuncioContentComponent,
+    EditarCategoriaComponent
   ],
   imports: [
     BrowserModule,
