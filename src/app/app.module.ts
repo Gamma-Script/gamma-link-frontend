@@ -19,6 +19,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
 import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
+import { AnuncioNewComponent } from './components/anuncio/anuncio-new/anuncio-new.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AnuncioContentComponent } from './components/anuncio/anuncio-content/an
     ListProductosCotizacionComponent,
     MoneyPipe,
     AnuncioListComponent,
-    AnuncioContentComponent
+    AnuncioContentComponent,
+    AnuncioNewComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@
     <br>
     <br>
     <div class="row">
-        <div class="col-md-1"></div>
+        <div class="col-md-1"> </div>
             <div  class="col-md-3">
                 <div class="container">
                      <h1>Gestión de archivos</h1>
@@ -10,7 +10,8 @@
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-success btn-lg">Agregar anuncio</button>
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#newUserModal" [routerLink] = "['new']" >Agregar anuncio</button>
+                <router-outlet></router-outlet>
             </div>
     </div>
     <div class="row">
@@ -67,3 +68,4 @@
 
                         </div>
     </div>
+ 

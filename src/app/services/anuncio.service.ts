@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import Swal from 'sweetalert2';
 import { anuncios } from '../components/anuncio/anuncio-list/anuncio-data';
 import { Anuncio } from '../models/anuncio';
 
@@ -27,4 +28,24 @@ export class AnuncioService {
 
    console.log(anuncio) 
   }
+
+addAnuncio(anuncio: Anuncio)
+{
+  console.log("El anuncio ha sido agregado");
+  console.log(anuncio)
+  
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'El anuncio ha sido agregado correctamente :3',
+    showConfirmButton: false,
+    timer: 2000
+  })
+anuncios.push(anuncio);
+
+
+}
+
+
+
 }
