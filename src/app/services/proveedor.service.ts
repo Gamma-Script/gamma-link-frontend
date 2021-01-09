@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {proveedoresData} from '../models/prueba-proveedor-data'
 import Swal from 'sweetalert2';
 import { Proveedor } from '../models/proveedor';
+import { proveedores } from '../components/proveedores/listado-proveedor/proveedor-data';
 
 @Injectable({
   providedIn: 'any'
@@ -21,6 +22,9 @@ export class ProveedorService {
     }
    }
 
+   getProveedorLista():Proveedor[]{
+    return proveedores;
+  }
 
 
 //-------------------------------------------------

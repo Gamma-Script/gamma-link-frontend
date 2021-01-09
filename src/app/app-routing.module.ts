@@ -16,6 +16,7 @@ import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-
 import { EditarCategoriaComponent } from './components/categorias/editar-categoria/editar-categoria.component';
 import { CrearCategoriaComponent } from './components/categorias/crear-categoria/crear-categoria.component';
 import { LoginComponent } from './components/login/login.component';
+import { ListadoProveedorComponent } from './components/proveedores/listado-proveedor/listado-proveedor.component';
 
 const routes: Routes = [
   //para probar el caso de uso puntuar proveedor poner de un solo en la url   /puntuarProveedor
@@ -46,7 +47,8 @@ const routes: Routes = [
       path: 'list', component: AnuncioListComponent
     }]
   },
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'proveedores', component: ListadoProveedorComponent}
 
   // {path : '', pathMatch: 'full',redirectTo: 'puntuarProveedor'}
 ];
