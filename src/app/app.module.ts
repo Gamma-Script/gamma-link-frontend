@@ -28,6 +28,7 @@ import { EditarCategoriaComponent } from './components/categorias/editar-categor
 import { CrearCategoriaComponent } from './components/categorias/crear-categoria/crear-categoria.component';
 import { LoginComponent } from './components/login/login.component';
 import { ListadoProveedorComponent } from './components/proveedores/listado-proveedor/listado-proveedor.component';
+import { FiltrosProveedorComponent } from './components/proveedores/filtros-proveedor/filtros-proveedor.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ListadoProveedorComponent } from './components/proveedores/listado-prov
     EditarCategoriaComponent,
     CrearCategoriaComponent,
     LoginComponent,
-    ListadoProveedorComponent
+    ListadoProveedorComponent,
+    FiltrosProveedorComponent
   ],
   imports: [
     BrowserModule,
