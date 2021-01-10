@@ -15,6 +15,9 @@ import { AnuncioContentComponent } from './components/anuncio/anuncio-content/an
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
 import { EditarCategoriaComponent } from './components/categorias/editar-categoria/editar-categoria.component';
 import { CrearCategoriaComponent } from './components/categorias/crear-categoria/crear-categoria.component';
+import { DeshabilitarCategoriaComponent } from './components/categorias/deshabilitar-categoria/deshabilitar-categoria.component';
+import { DeshabilitarProductoComponent } from './components/producto/deshabilitar-producto/deshabilitar-producto.component';
+import { AnuncioDeleteComponent } from './components/anuncio/anuncio-delete/anuncio-delete.component';
 
 const routes: Routes = [
   //para probar el caso de uso puntuar proveedor poner de un solo en la url   /puntuarProveedor
@@ -27,6 +30,9 @@ const routes: Routes = [
   {path: 'gestionar-productos' ,component: GestionarProductosContainerComponent},
   {path: 'editar-producto', component: EditarProductoComponent},
   {path: 'agregar-producto', component: CrearProductoComponent},
+  {path: 'deshabilitar-categoria', component: DeshabilitarCategoriaComponent},
+  {path: 'deshabilitar-producto', component: DeshabilitarProductoComponent},
+  {path: 'Anuncio-delete', component: AnuncioDeleteComponent},
   {path: 'content', component : CuentaContainerComponent
     ,
     children: [{

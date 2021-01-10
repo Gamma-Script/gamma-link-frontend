@@ -21,4 +21,6 @@ export class ListProductosComponent implements OnInit {
     localStorage.setItem("id", producto.id.toString());
     this.router.navigate(["editar-producto"]);
   }
+
+
 }

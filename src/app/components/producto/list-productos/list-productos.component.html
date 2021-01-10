@@ -18,7 +18,7 @@
         <td> {{ producto.categoria }} </td>
         <td>
             <button type="button" class="btn btn-warning" (click)="edithProducto(producto)"><i class="fas fa-pencil-alt"></i></button>
-            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+            <button type="button" class="btn btn-danger" (click)="eliminarProducto(producto)"><i class="fas fa-trash"></i></button>
         </td>
       </tr>
     </tbody>

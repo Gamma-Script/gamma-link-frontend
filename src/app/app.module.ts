@@ -26,6 +26,10 @@ import { AnuncioContentComponent } from './components/anuncio/anuncio-content/an
 import { HttpClientModule } from '@angular/common/http';
 import { EditarCategoriaComponent } from './components/categorias/editar-categoria/editar-categoria.component';
 import { CrearCategoriaComponent } from './components/categorias/crear-categoria/crear-categoria.component';
+import { DeshabilitarCategoriaComponent } from './components/categorias/deshabilitar-categoria/deshabilitar-categoria.component';
+import { EliminarProductoComponent } from './components/producto/eliminar-producto/eliminar-producto.component';
+import { AnuncioDeleteComponent } from './components/anuncio/anuncio-delete/anuncio-delete.component';
+import { DeshabilitarProductoComponent } from './components/producto/deshabilitar-producto/deshabilitar-producto.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +52,11 @@ import { CrearCategoriaComponent } from './components/categorias/crear-categoria
     AnuncioListComponent,
     AnuncioContentComponent,
     EditarCategoriaComponent,
-    CrearCategoriaComponent
+    CrearCategoriaComponent,
+    DeshabilitarCategoriaComponent,
+    EliminarProductoComponent,
+    AnuncioDeleteComponent,
+    DeshabilitarProductoComponent
   ],
   imports: [
     BrowserModule,

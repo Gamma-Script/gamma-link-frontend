@@ -30,4 +30,17 @@ export class AnuncioService {
   {
 
   }
+
+  deleteAnuncio(anuncio :Anuncio):Observable<any> {    
+  
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+      
+   // this.http.get<Producto[]>(`${this.url}`,{ headers: headers});
+  
+    return this.http.delete<Anuncio[]>(`${this.url}`,{ headers: headers})
+    
+  }
 }
