@@ -34,13 +34,13 @@ export class ProductoService {
     return this.http.get<Producto>(`${this.url}/${ident}`,{ headers: headers});
  }
 
- addProducto(producto: Producto):Observable<any> {
-    return this.http.post<any>(`${this.url}`, producto); 
+ addProducto(producto: Producto):Observable<Producto> {
+    return this.http.post<Producto>(`${this.url}`, producto); 
   }
 
 //metodo para actualizar el producto
-updateProducto(producto: Producto):Observable<any> {
-  return this.http.put<any>(`${this.url}`, producto);
+updateProducto(producto: Producto):Observable<Producto> {
+  return this.http.put<Producto>(`${this.url}/${producto.id}`, producto);
 }
 
 

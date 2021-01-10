@@ -26,10 +26,9 @@ import { AnuncioContentComponent } from './components/anuncio/anuncio-content/an
 import { HttpClientModule } from '@angular/common/http';
 import { EditarCategoriaComponent } from './components/categorias/editar-categoria/editar-categoria.component';
 import { CrearCategoriaComponent } from './components/categorias/crear-categoria/crear-categoria.component';
-import { DeshabilitarCategoriaComponent } from './components/categorias/deshabilitar-categoria/deshabilitar-categoria.component';
-import { EliminarProductoComponent } from './components/producto/eliminar-producto/eliminar-producto.component';
-import { AnuncioDeleteComponent } from './components/anuncio/anuncio-delete/anuncio-delete.component';
-import { DeshabilitarProductoComponent } from './components/producto/deshabilitar-producto/deshabilitar-producto.component';
+import { LoginComponent } from './components/login/login.component';
+import { ListadoProveedorComponent } from './components/proveedores/listado-proveedor/listado-proveedor.component';
+import { FiltrosProveedorComponent } from './components/proveedores/filtros-proveedor/filtros-proveedor.component';
 
 @NgModule({
   declarations: [
@@ -53,10 +52,16 @@ import { DeshabilitarProductoComponent } from './components/producto/deshabilita
     AnuncioContentComponent,
     EditarCategoriaComponent,
     CrearCategoriaComponent,
+
     DeshabilitarCategoriaComponent,
     EliminarProductoComponent,
     AnuncioDeleteComponent,
     DeshabilitarProductoComponent
+
+    LoginComponent,
+    ListadoProveedorComponent,
+    FiltrosProveedorComponent
+
   ],
   imports: [
     BrowserModule,

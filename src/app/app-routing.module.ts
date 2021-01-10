@@ -18,6 +18,9 @@ import { CrearCategoriaComponent } from './components/categorias/crear-categoria
 import { DeshabilitarCategoriaComponent } from './components/categorias/deshabilitar-categoria/deshabilitar-categoria.component';
 import { DeshabilitarProductoComponent } from './components/producto/deshabilitar-producto/deshabilitar-producto.component';
 import { AnuncioDeleteComponent } from './components/anuncio/anuncio-delete/anuncio-delete.component';
+import { LoginComponent } from './components/login/login.component';
+import { ListadoProveedorComponent } from './components/proveedores/listado-proveedor/listado-proveedor.component';
+
 
 const routes: Routes = [
   //para probar el caso de uso puntuar proveedor poner de un solo en la url   /puntuarProveedor
@@ -50,7 +53,9 @@ const routes: Routes = [
     children: [{
       path: 'list', component: AnuncioListComponent
     }]
-  }
+  },
+  {path: 'login', component: LoginComponent},
+  {path: 'proveedores', component: ListadoProveedorComponent}
 
   // {path : '', pathMatch: 'full',redirectTo: 'puntuarProveedor'}
 ];
