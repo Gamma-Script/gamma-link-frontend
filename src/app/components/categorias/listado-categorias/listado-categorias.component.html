@@ -4,8 +4,10 @@
     <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Buscar" git aria-label="Search">
   </form>
 
-<div class="container mt-2 row">
-    <app-crear-categoria></app-crear-categoria>
+<div class="container mt-2 row " >
+    <div class="col text-right">
+        <button class="btn btn-primary " data-toggle="modal" data-target="#crearCategoriaModal" >crear Categoria</button>  
+    </div>
 </div>
 
 <div class="row container mt-3 mb-5 justify-content-left">
@@ -16,13 +18,18 @@
             <hr>
             <h6 class="card-subtitle mb-2 text-muted">{{categorias.descripcion}}</h6>
         </div>
-        <router-outlet></router-outlet>
         <div class="card-footer text-right">
             <!--Se agregara solo si es un cliente proveedor
             <button class="btn btn-primary">Editar</button>
             <button class="btn ml-2 btn-danger">Eliminar</button>
             -->
-            <editar-categoria></editar-categoria>
+            <button (click)="editarCategoria(categorias)"class="btn btn-primary" data-toggle="modal" data-target="#editarCategoriaModal" >Editar</button>
+
         </div>
     </div>
 </div>
+<app-editar-categoria
+[categoriaEditar]="categoria"
+></app-editar-categoria>
+<app-crear-categoria></app-crear-categoria>
+<router-outlet></router-outlet>

@@ -10,10 +10,16 @@ import { CategoriasService } from '../../../services/categorias.service'
 export class ListadoCategoriasComponent implements OnInit {
 
   categorias : Categoria[];
+  categoria:Categoria;
 
   constructor(
     private categoriasService : CategoriasService
   ) { }
+
+  editarCategoria(categoria:Categoria){
+    this.categoria=categoria;
+
+  }
 
   ngOnInit(): void {
     this.categoriasService.getCategorias().subscribe(
