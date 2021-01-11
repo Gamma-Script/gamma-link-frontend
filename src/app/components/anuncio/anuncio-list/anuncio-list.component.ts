@@ -15,8 +15,14 @@ declare var jQuery:any;
 export class AnuncioListComponent implements OnInit {
 
   anuncios : Anuncio[];
+<<<<<<< HEAD
   checkForm;
   @Output () idEdit = new EventEmitter<number>();
+=======
+  constructor(
+    private anuncioService : AnuncioService
+  ) { }
+>>>>>>> 703008ff93848fc3729758bd66afb6582c75b5d2
 
   constructor(
     private anuncioService : AnuncioService,
@@ -25,6 +31,7 @@ export class AnuncioListComponent implements OnInit {
 
 //----------------inicio del componente-------------------------------
   ngOnInit(): void {
+<<<<<<< HEAD
     this.anuncios = this.anuncioService.getsAnuncios();
   }
 //-----------------metodo para la propiedad click de editar------------------------------------
@@ -40,6 +47,18 @@ export class AnuncioListComponent implements OnInit {
   })(jQuery);
     
   //--------------------------Metodo que da de baja los anuncios al hacer click------------------------------------
+=======
+    this.anuncioService.getsAnuncios().subscribe(
+      anuncios => {
+        this.anuncios = anuncios;
+        console.log(this.anuncios);
+      },
+      (error : any) => {
+        console.log(error);
+      }
+    )
+    
+>>>>>>> 703008ff93848fc3729758bd66afb6582c75b5d2
   }
 
   darDeBaja(anuncio:Anuncio)

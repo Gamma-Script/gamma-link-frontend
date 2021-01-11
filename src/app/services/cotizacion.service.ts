@@ -18,11 +18,11 @@ export class CotizacionService {
         pc.cantidad += cantidad;
         pc.precioTotal += cantidad * producto.precio;
         return; 
+      }
     }
-  }
     ProductosCotizados.push(prodC);
     return;
-}
+  }
 
   //metodo para obtener la lista de productos cotizados
   getProductosCotizacion(){

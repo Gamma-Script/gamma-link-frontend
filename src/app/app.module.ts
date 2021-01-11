@@ -17,11 +17,24 @@ import { ListProductosCotizacionComponent } from './components/producto/list-pro
 import { MoneyPipe } from './pipes/money.pipe';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GestionarProductosContainerComponent } from './components/producto/gestionar-productos-container/gestionar-productos-container.component';
+import { ListProductosComponent } from './components/producto/list-productos/list-productos.component';
+import { CrearProductoComponent } from './components/producto/crear-producto/crear-producto.component';
+import { EditarProductoComponent } from './components/producto/editar-producto/editar-producto.component';
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
 import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
+<<<<<<< HEAD
 import { AnuncioNewComponent } from './components/anuncio/anuncio-new/anuncio-new.component';
 import { AnuncioEditComponent } from './components/anuncio/anuncio-edit/anuncio-edit.component';
 import { CommonModule } from '@angular/common';
+=======
+import { HttpClientModule } from '@angular/common/http';
+import { EditarCategoriaComponent } from './components/categorias/editar-categoria/editar-categoria.component';
+import { CrearCategoriaComponent } from './components/categorias/crear-categoria/crear-categoria.component';
+import { LoginComponent } from './components/login/login.component';
+import { ListadoProveedorComponent } from './components/proveedores/listado-proveedor/listado-proveedor.component';
+import { FiltrosProveedorComponent } from './components/proveedores/filtros-proveedor/filtros-proveedor.component';
+>>>>>>> 703008ff93848fc3729758bd66afb6582c75b5d2
 
 @NgModule({
   declarations: [
@@ -37,10 +50,25 @@ import { CommonModule } from '@angular/common';
     FormProductosCotizacionComponent,
     ListProductosCotizacionComponent,
     MoneyPipe,
+    GestionarProductosContainerComponent,
+    ListProductosComponent,
+    CrearProductoComponent,
+    EditarProductoComponent,
     AnuncioListComponent,
     AnuncioContentComponent,
+<<<<<<< HEAD
     AnuncioNewComponent,
     AnuncioEditComponent
+=======
+    EditarCategoriaComponent,
+    CrearCategoriaComponent,
+
+
+    LoginComponent,
+    ListadoProveedorComponent,
+    FiltrosProveedorComponent
+
+>>>>>>> 703008ff93848fc3729758bd66afb6582c75b5d2
   ],
   imports: [
     CommonModule,
@@ -50,7 +78,8 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     FormsModule,
     SimpleNotificationsModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

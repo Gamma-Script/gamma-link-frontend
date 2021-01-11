@@ -8,25 +8,58 @@ import { CuentaContainerComponent } from './components/cuenta/cuenta-container/c
 import { CuentaFormComponent } from './components/cuenta/cuenta-form/cuenta-form.component';
 import { ListadoCategoriasComponent } from './components/categorias/listado-categorias/listado-categorias.component';
 import { CotizacionContainerComponent } from './components/producto/cotizacion-container/cotizacion-container.component';
+import { GestionarProductosContainerComponent } from './components/producto/gestionar-productos-container/gestionar-productos-container.component';
+import { EditarProductoComponent } from './components/producto/editar-producto/editar-producto.component'
+import { CrearProductoComponent } from './components/producto/crear-producto/crear-producto.component'
 import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
+<<<<<<< HEAD
 import { AnuncioNewComponent } from './components/anuncio/anuncio-new/anuncio-new.component';
 import { AnuncioEditComponent } from './components/anuncio/anuncio-edit/anuncio-edit.component';
+=======
+import { EditarCategoriaComponent } from './components/categorias/editar-categoria/editar-categoria.component';
+import { CrearCategoriaComponent } from './components/categorias/crear-categoria/crear-categoria.component';
+import { DeshabilitarCategoriaComponent } from './components/categorias/deshabilitar-categoria/deshabilitar-categoria.component';
+import { DeshabilitarProductoComponent } from './components/producto/deshabilitar-producto/deshabilitar-producto.component';
+import { AnuncioDeleteComponent } from './components/anuncio/anuncio-delete/anuncio-delete.component';
+import { LoginComponent } from './components/login/login.component';
+import { ListadoProveedorComponent } from './components/proveedores/listado-proveedor/listado-proveedor.component';
+
+>>>>>>> 703008ff93848fc3729758bd66afb6582c75b5d2
 
 const routes: Routes = [
   //para probar el caso de uso puntuar proveedor poner de un solo en la url   /puntuarProveedor
-  {path: 'puntuarProveedor',component:PuntuarProveedorContenedorComponent,
-  children:[{path:'',component:ListadoComentariosComponent},{path:'',component:FormularioComponent}]
+  {path: 'puntuar-proveedor', component: PuntuarProveedorContenedorComponent,
+    children: [{ path: '', component: ListadoComentariosComponent }, { path: '', component: FormularioComponent }]
   },
   {path: 'productos/cotizados' ,component: CotizacionContainerComponent},
   {path : 'productos', component : ProductoContainerComponent},
-  {path: 'categorias', component : ListadoCategoriasComponent},
+  {path: 'categorias', component : ListadoCategoriasComponent,children:[{path:'',component:EditarCategoriaComponent},{path:'',component:CrearCategoriaComponent}]},
+  {path: 'gestionar-productos' ,component: GestionarProductosContainerComponent},
+  {path: 'editar-producto', component: EditarProductoComponent},
+  {path: 'agregar-producto', component: CrearProductoComponent},
+  {path: 'deshabilitar-categoria', component: DeshabilitarCategoriaComponent},
+  {path: 'deshabilitar-producto', component: DeshabilitarProductoComponent},
+  {path: 'Anuncio-delete', component: AnuncioDeleteComponent},
   {path: 'content', component : CuentaContainerComponent
-  ,
-  children: [{
-    path: 'new', component: CuentaFormComponent
-  }]
+    ,
+    children: [{
+      path: 'new', component: CuentaFormComponent}
+    ]
   },
+  {
+    path: 'content', component: CuentaContainerComponent,
+    children: [{
+      path: 'new', component: CuentaFormComponent
+    }]
+  },
+  {
+    path: 'anuncio', component: AnuncioContentComponent,
+    children: [{
+      path: 'list', component: AnuncioListComponent
+    }]
+  },
+<<<<<<< HEAD
   {path : 'anuncioContainer', component : AnuncioContentComponent,
   children:[
     {path : 'list', component : AnuncioListComponent},
@@ -34,8 +67,12 @@ const routes: Routes = [
     {path : 'edit', component : AnuncioEditComponent}
     ]
 }
+=======
+  {path: 'login', component: LoginComponent},
+  {path: 'proveedores', component: ListadoProveedorComponent}
+>>>>>>> 703008ff93848fc3729758bd66afb6582c75b5d2
 
- // {path : '', pathMatch: 'full',redirectTo: 'puntuarProveedor'}
+  // {path : '', pathMatch: 'full',redirectTo: 'puntuarProveedor'}
 ];
 
 @NgModule({

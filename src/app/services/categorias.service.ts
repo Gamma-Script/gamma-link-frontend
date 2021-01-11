@@ -1,15 +1,28 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Categorias } from '../models/categorias';
-import { categorias } from '../components/categorias/listado-categorias/categorias-data';
+import { Observable } from 'rxjs';
+import { Categoria } from '../models/categorias';
+import { urlBase } from './global';
 
 @Injectable({
   providedIn: 'any'
 })
 export class CategoriasService {
 
-  constructor() { }
+  private url: string = `${urlBase}/proveedor/categorias`;
 
-  getCategorias():Categorias[]{
-    return categorias;
+  constructor(
+    private http : HttpClient
+  ) { }
+
+  getCategorias():Observable<Categoria[]>{
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+
+    return this.http.get<Categoria[]>(`${this.url}`,{ headers: headers});
   } 
+
+  
 }

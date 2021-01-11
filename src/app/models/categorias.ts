@@ -1,8 +1,8 @@
-export class Categorias {
+export class Categoria {
 
     constructor(
-        public nombreCategoria : String,
-        public descripcionCategoria : String,
+        public nombre : String,
+        public descripcion : String,
         public imagen : String
     ){
     }

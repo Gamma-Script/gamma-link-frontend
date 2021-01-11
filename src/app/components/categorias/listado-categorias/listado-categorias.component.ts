@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Categorias } from 'src/app/models/categorias';
+import { Categoria } from 'src/app/models/categorias';
 import { CategoriasService } from '../../../services/categorias.service'
+import{NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-listado-categorias',
@@ -9,14 +10,30 @@ import { CategoriasService } from '../../../services/categorias.service'
 })
 export class ListadoCategoriasComponent implements OnInit {
 
-  categorias : Categorias[];
+  categorias : Categoria[];
+  categoria:Categoria;
 
   constructor(
-    private categoriasService : CategoriasService
+    private categoriasService : CategoriasService,
+    private modal: NgbModal
   ) { }
 
+  editarCategoria(categoria:Categoria){
+    this.categoria=categoria;
+
+  }
+
   ngOnInit(): void {
-    this.categorias = this.categoriasService.getCategorias();
+    this.categoriasService.getCategorias().subscribe(
+      categorias => {
+        this.categorias = categorias;
+        console.log(categorias)
+      },
+      (error : any) =>{
+        console.log(error);
+      }
+      
+    );
     console.log(this.categorias);
   }
 

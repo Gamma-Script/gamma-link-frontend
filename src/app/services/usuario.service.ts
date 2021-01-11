@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Usuario } from '../models/Usuario';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'any'

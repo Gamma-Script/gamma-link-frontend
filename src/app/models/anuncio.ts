@@ -1,4 +1,4 @@
-import { Proveedor } from './Proveedor';
+import { Proveedor } from './proveedor';
 
 export class Anuncio {
     

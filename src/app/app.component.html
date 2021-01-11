@@ -9,6 +9,7 @@
         <title>Gamma Link</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
+    
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand">Gamma Link</a>
@@ -39,6 +40,7 @@
                 </li>
             </ul>
         </nav>
+        
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -57,13 +59,13 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link">Inicia Sesion</a>
+                                    <a class="nav-link" [routerLink]="['login']">Inicia Sesion</a>
                                     <a class="nav-link" [routerLink] = "['content/new']" data-toggle="modal" data-target="#newUserModal">Registrarse</a>
                                 </nav>
                             </div>
                            
                             <div class="sb-sidenav-menu-heading">Catalogos</div>
-                            <a class="nav-link">
+                            <a class="nav-link" [routerLink]="['proveedores']">
                               <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                               Proveedores
                             </a>

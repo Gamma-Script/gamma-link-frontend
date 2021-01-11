@@ -1,6 +1,6 @@
 import { Anuncio } from 'src/app/models/anuncio';
-import { Proveedor } from 'src/app/models/Proveedor';
-import { Usuario } from 'src/app/models/Usuario';
+import { Proveedor } from 'src/app/models/proveedor';
+import { Usuario } from 'src/app/models/usuario';
 
 
 //para la prueba se crean 4 objetos de tipo usuario
