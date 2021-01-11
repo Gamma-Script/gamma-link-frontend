@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
 import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
 import { AnuncioNewComponent } from './components/anuncio/anuncio-new/anuncio-new.component';
+import { AnuncioEditComponent } from './components/anuncio/anuncio-edit/anuncio-edit.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,11 @@ import { AnuncioNewComponent } from './components/anuncio/anuncio-new/anuncio-ne
     MoneyPipe,
     AnuncioListComponent,
     AnuncioContentComponent,
-    AnuncioNewComponent
+    AnuncioNewComponent,
+    AnuncioEditComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,

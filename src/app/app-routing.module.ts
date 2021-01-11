@@ -11,6 +11,7 @@ import { CotizacionContainerComponent } from './components/producto/cotizacion-c
 import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
 import { AnuncioNewComponent } from './components/anuncio/anuncio-new/anuncio-new.component';
+import { AnuncioEditComponent } from './components/anuncio/anuncio-edit/anuncio-edit.component';
 
 const routes: Routes = [
   //para probar el caso de uso puntuar proveedor poner de un solo en la url   /puntuarProveedor
@@ -28,8 +29,9 @@ const routes: Routes = [
   },
   {path : 'anuncioContainer', component : AnuncioContentComponent,
   children:[
-    {path : 'list', component : AnuncioListComponent,
-     children: [{path : 'new', component : AnuncioNewComponent}]}
+    {path : 'list', component : AnuncioListComponent},
+     {path : 'new', component : AnuncioNewComponent},
+    {path : 'edit', component : AnuncioEditComponent}
     ]
 }
 

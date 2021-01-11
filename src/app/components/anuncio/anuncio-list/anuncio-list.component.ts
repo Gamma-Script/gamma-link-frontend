@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
+import { FormBuilder} from '@angular/forms';
 import { Anuncio } from 'src/app/models/anuncio';
 import { AnuncioService } from 'src/app/services/anuncio.service';
 import Swal from 'sweetalert2';
+import { anuncios } from './anuncio-data';
+import { $ } from 'protractor';
+declare var jQuery:any;
 
 @Component({
   selector: 'app-anuncio-list',
@@ -11,12 +15,31 @@ import Swal from 'sweetalert2';
 export class AnuncioListComponent implements OnInit {
 
   anuncios : Anuncio[];
-  constructor(private anuncioService : AnuncioService) { }
+  checkForm;
+  @Output () idEdit = new EventEmitter<number>();
 
+  constructor(
+    private anuncioService : AnuncioService,
+    public formBuilder : FormBuilder
+    ) {}
 
+//----------------inicio del componente-------------------------------
   ngOnInit(): void {
     this.anuncios = this.anuncioService.getsAnuncios();
-    console.log(this.anuncios);
+  }
+//-----------------metodo para la propiedad click de editar------------------------------------
+  getAnuncio(idAnuncio : number)
+  {
+
+    console.log("Estoy en el metodo y se emitio algo");
+    this.idEdit.emit(idAnuncio);
+    
+    (function($){
+      "use strict";
+      $('#exampleModal').modal('show');
+  })(jQuery);
+    
+  //--------------------------Metodo que da de baja los anuncios al hacer click------------------------------------
   }
 
   darDeBaja(anuncio:Anuncio)
