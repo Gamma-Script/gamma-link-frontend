@@ -13,10 +13,8 @@ import { EditarProductoComponent } from './components/producto/editar-producto/e
 import { CrearProductoComponent } from './components/producto/crear-producto/crear-producto.component'
 import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
-<<<<<<< HEAD
 import { AnuncioNewComponent } from './components/anuncio/anuncio-new/anuncio-new.component';
 import { AnuncioEditComponent } from './components/anuncio/anuncio-edit/anuncio-edit.component';
-=======
 import { EditarCategoriaComponent } from './components/categorias/editar-categoria/editar-categoria.component';
 import { CrearCategoriaComponent } from './components/categorias/crear-categoria/crear-categoria.component';
 import { DeshabilitarCategoriaComponent } from './components/categorias/deshabilitar-categoria/deshabilitar-categoria.component';
@@ -25,7 +23,6 @@ import { AnuncioDeleteComponent } from './components/anuncio/anuncio-delete/anun
 import { LoginComponent } from './components/login/login.component';
 import { ListadoProveedorComponent } from './components/proveedores/listado-proveedor/listado-proveedor.component';
 
->>>>>>> 703008ff93848fc3729758bd66afb6582c75b5d2
 
 const routes: Routes = [
   //para probar el caso de uso puntuar proveedor poner de un solo en la url   /puntuarProveedor
@@ -59,18 +56,14 @@ const routes: Routes = [
       path: 'list', component: AnuncioListComponent
     }]
   },
-<<<<<<< HEAD
   {path : 'anuncioContainer', component : AnuncioContentComponent,
   children:[
     {path : 'list', component : AnuncioListComponent},
      {path : 'new', component : AnuncioNewComponent},
     {path : 'edit', component : AnuncioEditComponent}
-    ]
-}
-=======
+    ]},
   {path: 'login', component: LoginComponent},
   {path: 'proveedores', component: ListadoProveedorComponent}
->>>>>>> 703008ff93848fc3729758bd66afb6582c75b5d2
 
   // {path : '', pathMatch: 'full',redirectTo: 'puntuarProveedor'}
 ];

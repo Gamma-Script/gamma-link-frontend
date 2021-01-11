@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 
     <br>
@@ -79,66 +78,3 @@
                            
 
     
-=======
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="card ml-4 mt-4" style="width: 68rem;">
-    <div class="card-header">
-      <div class="row">
-        <div class="col">
-          <h3>Anuncios registrados</h3>
-        </div>
-        <div class="col-md-2">
-          <button type="button" class="btn btn-success btn">Agregar anuncio</button>
-        </div>
-      </div>
-    </div>
-    <div class="card-body">
-      <!-- comienzo del card interno -->
-      <div class="row mb-4">
-        <div *ngFor="let anuncio of anuncios" class="card ml-4 mt-4" style="width: 30rem;">
-          <img class="card-img-top"  src="https://www.pallomaro.com/wp-content/uploads/2018/09/Gran-promocion-pallomaro-02-02.png" alt="Anuncios Image" style="height: 18rem;">
-          <div class="card-body">
-            <h3 class="card-title">{{anuncio.nombre}}</h3>
-            <p class="card-text">{{anuncio.descripcion}}</p>
-          </div>
-          <div class="card-footer text-right">
-
-            <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-            </svg>
-
-            <!-- FALTA INTEGRACION -->
-            <svg *ngIf="anuncio.estado == 1 " (click)="darDeBaja(anuncio)" width="2.5em" height="2.5em"
-              viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
-            </svg>
-
-            <svg *ngIf="anuncio.estado == 0 " width="2.5em" height="2.5em" viewBox="0 0 16 16"
-              class="bi bi-arrow-up-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path fill-rule="evenodd"
-                d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
-            </svg>
-
-
-            <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
-            </svg>
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- fin del card interno -->
-    </div>
-  </div>
-</div>
->>>>>>> 703008ff93848fc3729758bd66afb6582c75b5d2

@@ -23,18 +23,15 @@ import { CrearProductoComponent } from './components/producto/crear-producto/cre
 import { EditarProductoComponent } from './components/producto/editar-producto/editar-producto.component';
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
 import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
-<<<<<<< HEAD
 import { AnuncioNewComponent } from './components/anuncio/anuncio-new/anuncio-new.component';
 import { AnuncioEditComponent } from './components/anuncio/anuncio-edit/anuncio-edit.component';
 import { CommonModule } from '@angular/common';
-=======
 import { HttpClientModule } from '@angular/common/http';
 import { EditarCategoriaComponent } from './components/categorias/editar-categoria/editar-categoria.component';
 import { CrearCategoriaComponent } from './components/categorias/crear-categoria/crear-categoria.component';
 import { LoginComponent } from './components/login/login.component';
 import { ListadoProveedorComponent } from './components/proveedores/listado-proveedor/listado-proveedor.component';
 import { FiltrosProveedorComponent } from './components/proveedores/filtros-proveedor/filtros-proveedor.component';
->>>>>>> 703008ff93848fc3729758bd66afb6582c75b5d2
 
 @NgModule({
   declarations: [
@@ -56,10 +53,8 @@ import { FiltrosProveedorComponent } from './components/proveedores/filtros-prov
     EditarProductoComponent,
     AnuncioListComponent,
     AnuncioContentComponent,
-<<<<<<< HEAD
     AnuncioNewComponent,
-    AnuncioEditComponent
-=======
+    AnuncioEditComponent,
     EditarCategoriaComponent,
     CrearCategoriaComponent,
 
@@ -68,7 +63,6 @@ import { FiltrosProveedorComponent } from './components/proveedores/filtros-prov
     ListadoProveedorComponent,
     FiltrosProveedorComponent
 
->>>>>>> 703008ff93848fc3729758bd66afb6582c75b5d2
   ],
   imports: [
     CommonModule,
