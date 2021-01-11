@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import{NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { AnuncioService } from 'src/app/services/anuncio.service';
 
 @Component({
   selector: 'app-anuncio-delete',
@@ -7,13 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnuncioDeleteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modal: NgbModal) { }
 
   ngOnInit(): void {
   }
 
-  deleteAnuncio(){
-    this
+
+  eliminarAnuncio(){
+   
   }
 
 }

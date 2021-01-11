@@ -1,4 +1,4 @@
-<ng-template>
+<ng-template #contenido3 let-modal>
   <div class="modal-header">
       <h5 class="modal-title">Deshabilitar Categoria</h5>
       <button type="button" class="btn-close"  aria-label="Close" (click)="modal.dismiss()"><span aria-hidden="true">&times;</span></button>
@@ -13,3 +13,5 @@
       <button type="submit" class="btn btn-primary"  >Cancelar</button>      
     </div>
 </ng-template>
+
+<button type="button" class="btn ml-2 btn-danger" (click)="modal.open(contenido3)">Deshabilitar</button>

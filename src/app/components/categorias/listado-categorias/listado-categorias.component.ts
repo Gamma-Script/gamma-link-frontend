@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Categoria } from 'src/app/models/categorias';
 import { CategoriasService } from '../../../services/categorias.service'
+import{NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-listado-categorias',
@@ -13,7 +14,8 @@ export class ListadoCategoriasComponent implements OnInit {
   categoria:Categoria;
 
   constructor(
-    private categoriasService : CategoriasService
+    private categoriasService : CategoriasService,
+    private modal: NgbModal
   ) { }
 
   editarCategoria(categoria:Categoria){

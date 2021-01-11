@@ -24,13 +24,15 @@
             <button class="btn ml-2 btn-danger">Eliminar</button>
 
 -->
-            <button class="btn ml-2 btn-danger" [routerLink]="['deshabilitar-categoria']">Deshabilitar</button>            
+           
             
 
 
             <editar-categoria></editar-categoria>
-            -->
+            
             <button (click)="editarCategoria(categorias)"class="btn btn-primary" data-toggle="modal" data-target="#editarCategoriaModal" >Editar</button>
+        <app-deshabilitar-categoria></app-deshabilitar-categoria>
+           
 
         </div>
     </div>

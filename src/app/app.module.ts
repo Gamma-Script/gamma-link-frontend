@@ -53,10 +53,6 @@ import { FiltrosProveedorComponent } from './components/proveedores/filtros-prov
     EditarCategoriaComponent,
     CrearCategoriaComponent,
 
-    DeshabilitarCategoriaComponent,
-    EliminarProductoComponent,
-    AnuncioDeleteComponent,
-    DeshabilitarProductoComponent
 
     LoginComponent,
     ListadoProveedorComponent,
