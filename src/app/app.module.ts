@@ -21,6 +21,13 @@ import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-
 import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
 import { HttpClientModule } from '@angular/common/http';
 
+// Authentication
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment as env } from '../environments/environment';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { HomeComponent } from './components/home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +43,10 @@ import { HttpClientModule } from '@angular/common/http';
     ListProductosCotizacionComponent,
     MoneyPipe,
     AnuncioListComponent,
-    AnuncioContentComponent
+    AnuncioContentComponent,
+    LoginButtonComponent,
+    LogoutButtonComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +56,10 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     SimpleNotificationsModule.forRoot(),
     BrowserAnimationsModule,
-    HttpClientModule 
+    HttpClientModule,
+    AuthModule.forRoot({
+      ...env.auth,
+    }), 
   ],
   providers: [],
   bootstrap: [AppComponent]

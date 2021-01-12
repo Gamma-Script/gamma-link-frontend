@@ -20,24 +20,21 @@
                 </div>
             </form>
             <!-- Navbar-->
+            
+            <app-logout-button></app-logout-button>
             <ul class="navbar-nav ml-auto ml-md-0">
                 <li>
                     <div class="btn-group dropleft">
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Productos en Cotización <i class="fas fa-cart-arrow-down"></i>
+                         <i class="fas fa-cart-arrow-down"></i>
                         </button>
                         <div class="dropdown-menu">
                           <app-list-productos-cotizacion class="dropdown-item"></app-list-productos-cotizacion>
                         </div>
                       </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item">Logout</a>
-                    </div>
-                </li>
             </ul>
+            
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -45,7 +42,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Home</div>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" [routerLink] = "['/']">
                                 <div class="sb-nav-link-icon"><i class="fas fa-rocket"></i></div>
                                 Inicio
                             </a>
@@ -57,7 +54,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link">Inicia Sesion</a>
+                                    <app-login-button></app-login-button>
                                     <a class="nav-link" [routerLink] = "['content/new']" data-toggle="modal" data-target="#newUserModal">Registrarse</a>
                                 </nav>
                             </div>

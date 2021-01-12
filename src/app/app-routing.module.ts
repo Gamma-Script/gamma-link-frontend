@@ -10,6 +10,7 @@ import { ListadoCategoriasComponent } from './components/categorias/listado-cate
 import { CotizacionContainerComponent } from './components/producto/cotizacion-container/cotizacion-container.component';
 import { AnuncioContentComponent } from './components/anuncio/anuncio-content/anuncio-content.component';
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   //para probar el caso de uso puntuar proveedor poner de un solo en la url   /puntuarProveedor
@@ -31,7 +32,8 @@ const routes: Routes = [
     children: [{
       path: 'list', component: AnuncioListComponent
     }]
-  }
+  },
+  { path: '', component: HomeComponent }
 
   // {path : '', pathMatch: 'full',redirectTo: 'puntuarProveedor'}
 ];

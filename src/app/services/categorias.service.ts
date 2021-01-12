@@ -15,12 +15,12 @@ export class CategoriasService {
     private http : HttpClient
   ) { }
 
-  getCategorias():Observable<Categoria[]>{
+  getCategorias(id):Observable<Categoria[]>{
     let headers = new HttpHeaders({
       'Authorization': '',
       'Content-type': 'application/json'
     });
 
-    return this.http.get<Categoria[]>(`${this.url}`,{ headers: headers});
+    return this.http.post<Categoria[]>(`${this.url}`,{ headers: headers});
   } 
 }
