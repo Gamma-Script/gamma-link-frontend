@@ -10,6 +10,7 @@ import { Router } from '@angular/router'
 export class ListProductosComponent implements OnInit {
 
   @Input() productos: Producto[];
+  producto: Producto;
 
   constructor(private router: Router) { }
 
@@ -22,5 +23,7 @@ export class ListProductosComponent implements OnInit {
     this.router.navigate(["editar-producto"]);
   }
 
-
+  pasar(producto: Producto){
+    this.producto = producto;
+  }
 }

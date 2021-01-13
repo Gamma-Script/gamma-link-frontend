@@ -18,9 +18,11 @@
         <td> {{ producto.categoria }} </td>
         <td>
             <button type="button" class="btn btn-warning" (click)="edithProducto(producto)"><i class="fas fa-pencil-alt"></i></button>
-            <button type="button" class="btn btn-danger" (click)="eliminarProducto(producto)"><i class="fas fa-trash"></i></button>
+            <button type="button" class="btn btn-danger" (click)="pasar(producto)" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fas fa-trash"></i></button>
         </td>
       </tr>
     </tbody>
   </table>
+
+<app-deshabilitar-producto [producto]="producto"></app-deshabilitar-producto>
 <router-outlet></router-outlet>

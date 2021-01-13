@@ -1,4 +1,4 @@
-import { Categoria } from '../models/categorias'
+import { Categoria } from '../models/categorias';
 import { Marca } from '../models/marca';
 
 export class Producto {
@@ -14,7 +14,8 @@ export class Producto {
         */
         public descripcion : string,
         public precio : number,
-        public imagen : string
+        public imagen : string,
+        public habilitado: boolean = true
     ){}
 
 }
