@@ -19,10 +19,17 @@ export class CategoriasService {
     let headers = new HttpHeaders({
       'Authorization': '',
       'Content-type': 'application/json'
-    });
+    }); 
 
     return this.http.get<Categoria[]>(`${this.url}`,{ headers: headers});
   } 
 
-  
+  getCategoria(ident : string) {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+
+    return this.http.get<Categoria>(`${this.url}/${ident}`,{ headers: headers});
+ }
 }

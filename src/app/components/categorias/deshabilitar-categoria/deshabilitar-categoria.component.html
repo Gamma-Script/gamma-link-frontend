@@ -1,3 +1,32 @@
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deshabilitar Categoria</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <!-- <p>¿Estas seguro en deshabilitar la Categoria {{ categorias.name }}?. </p> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar <i class="fas fa-window-close"></i></button>
+        <div class="form-group">
+          <!--
+          <button type="submit" class="btn btn-danger" (click)="deshabilitarCategoria()">Deshabilitar <i class="fas fa-ban"></i></button>
+       -->
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
+
 <ng-template #contenido3 let-modal>
   <div class="modal-header">
       <h5 class="modal-title">Deshabilitar Categoria</h5>
@@ -9,9 +38,10 @@
         </div>  
     </div>     
     <div class="modal-footer">
-      <button type="button" class="btn ml-2 btn-danger" >Deshabilitar</button>
-      <button type="submit" class="btn btn-primary"  >Cancelar</button>      
+      <button type="button" class="btn ml-2 btn-danger" (click)="deshabiliarCategoria()" >Deshabilitar</button>
+      <button type="submit" class="btn btn-primary"  (click)="modal.close()">Cancelar</button>      
     </div>
 </ng-template>
 
 <button type="button" class="btn ml-2 btn-danger" (click)="modal.open(contenido3)">Deshabilitar</button>
+-->
