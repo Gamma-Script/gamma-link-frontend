@@ -35,7 +35,7 @@ export class FormProductosCotizacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkForm = this.fBuil.group({
-    cantidad: [0, [Validators.required,Validators.pattern('^([1-9]|[0-2][0-9]|1000])$')]]
+    cantidad: [0, [Validators.required,Validators.pattern('^([1-9]|[1-2][0-9]|[0-2][1-9])$')]]
     });
   }
 

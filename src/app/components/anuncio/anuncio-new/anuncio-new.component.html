@@ -1,0 +1,64 @@
+<div class="modal" id="newUserModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Añadir anuncio</h5>
+          <button type="button" class="close btn-lg" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup] = "checkForm" (ngSubmit) = "onSubmit(checkForm.value)">
+                <div class="form-row">
+              
+                    
+                    <div class="form-group col-md-6">
+
+                        <div class="container-fluid">
+                        <label for="urlImagen">Seleccione su imagen para el anuncio</label>
+                        <div class="custom-file">
+                          <input type="file" formControlName="urlImagen" accept=".jpg, .png, .jpeg, .gif," class="custom-file-input" id="urlImagen" lang="es">
+                          <label class="custom-file-label" for="urlImagen">Seleccionar Archivo</label>
+                        </div>
+
+                </div>
+                   </div>
+                    <div class="form-group col-md-6">
+                            <label for="Nombre">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre" id="Nombre" aria-describedby="Nombredescripcion">
+                            <small id="Nombredescripcion" class="form-text text-muted">Es requerido un nombre para el anuncio</small>
+                            <small *ngIf = "checkForm.get('nombre').touched && checkForm.get('nombre').invalid" class = "ml-2 text-danger"> Nombre obligatorio</small>
+                            <br>
+                            <br>
+                            <label for="descripcion">Descripcion</label>
+                            <input type="text" class="form-control" formControlName="descripcion" id="descripcion"ria-describedby="anunciodescripcion">
+                            <small id="anunciodescripcion" class="form-text text-muted">Descripcion del anuncio</small>
+                            <small *ngIf = "checkForm.get('descripcion').touched && checkForm.get('descripcion').invalid" class = "ml-1 text-danger">La descripcion del anuncio es requerida</small>
+                            <br>
+                            <br>
+                            <label for="fechaPublicacion">Fecha de publicacion</label>
+                            <input type="date" class="form-control" formControlName="fechaPublicacion" id="fechaPublicacion">
+                            <small *ngIf = "checkForm.get('fechaPublicacion').touched && checkForm.get('fechaPublicacion').invalid" class = "ml-2 text-danger">Fecha de publicacion es requerida</small>
+                            <br> 
+                            <br>
+                            <label for="fechaDeBaja">Fecha</label>
+                            <input type="date" class="form-control" formControlName="fechaDeBaja" id="fechaDeBaja">
+                            <small *ngIf = "checkForm.get('fechaDeBaja').touched && checkForm.get('fechaDeBaja').invalid" class = "ml-2 text-danger">Fecha de baja requerida</small>
+                            <br>
+                            <br>
+                            
+                   </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-lg" (click) = "clear()" data-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-success btn-lg" [disabled] = "!checkForm.valid" >Registrar anuncio</button>
+                </div>
+              </form>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+
+ 

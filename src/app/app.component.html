@@ -9,6 +9,7 @@
         <title>Gamma Link</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
+    
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand">Gamma Link</a>
@@ -36,6 +37,7 @@
             </ul>
             
         </nav>
+        
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -60,7 +62,7 @@
                             </div>
                            
                             <div class="sb-sidenav-menu-heading">Catalogos</div>
-                            <a class="nav-link">
+                            <a class="nav-link" [routerLink]="['proveedores']">
                               <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                               Proveedores
                             </a>
@@ -85,8 +87,8 @@
                    <!-- ░
                   █▀█ █▀█ █░█ ▀█▀ █▀▀ █▀█   █▀█ █░█ ▀█▀ █░░ █▀▀ ▀█▀
                   █▀▄ █▄█ █▄█ ░█░ ██▄ █▀▄   █▄█ █▄█ ░█░ █▄▄ ██▄ ░█░
-                   -->
-                   <router-outlet></router-outlet>
+                   -->  
+                    <router-outlet></router-outlet>
                   <!--
                     █▀▀ █ █▄░█
                     █▀░ █ █░▀█

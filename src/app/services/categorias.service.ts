@@ -23,4 +23,6 @@ export class CategoriasService {
 
     return this.http.post<Categoria[]>(`${this.url}`,{ headers: headers});
   } 
+
+  
 }

@@ -11,7 +11,7 @@ export class ProductoContainerComponent implements OnInit {
 
   productos: Producto[];
   isCliente: boolean;
-  p: Producto = null;
+  p: Producto;
 
   constructor(
     private productoService : ProductoService

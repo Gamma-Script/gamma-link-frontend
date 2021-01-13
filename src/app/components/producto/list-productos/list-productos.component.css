@@ -1,0 +1,9 @@
+table{
+    margin: 20px;
+    width: 1000px;
+}
+
+button{
+    margin: 3px;
+    border-radius: 50px;
+}

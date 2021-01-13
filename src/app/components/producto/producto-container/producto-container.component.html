@@ -114,5 +114,5 @@
       </div>
     </div>
 </div>
-<app-cotizacion-container [product]="p"></app-cotizacion-container>
+<app-cotizacion-container *ngIf="p" [product]="p"></app-cotizacion-container>
 <router-outlet></router-outlet>
