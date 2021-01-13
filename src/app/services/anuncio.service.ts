@@ -16,7 +16,7 @@ export class AnuncioService {
 
 //---------------------------------------------------------------
 
-  private url: string = `${urlBase}/proveedor/anuncios`;
+  private url: string = `${urlBase}/providers/anuncios`;
 
   constructor(
     private http : HttpClient
@@ -92,8 +92,7 @@ export class AnuncioService {
       'Content-type': 'application/json'
     });
       
-   // this.http.get<Producto[]>(`${this.url}`,{ headers: headers});
-  
+     
     return this.http.delete<Anuncio[]>(`${this.url}`,{ headers: headers})
     
   }

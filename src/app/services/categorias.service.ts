@@ -9,7 +9,7 @@ import { urlBase } from './global';
 })
 export class CategoriasService {
 
-  private url: string = `${urlBase}/proveedor/categorias`;
+  private url: string = `${urlBase}/categories`;
 
   constructor(
     private http : HttpClient
@@ -19,10 +19,17 @@ export class CategoriasService {
     let headers = new HttpHeaders({
       'Authorization': '',
       'Content-type': 'application/json'
-    });
+    }); 
 
     return this.http.post<Categoria[]>(`${this.url}`,{ headers: headers});
   } 
 
-  
+  getCategoria(ident : string) {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+
+    return this.http.get<Categoria>(`${this.url}/${ident}`,{ headers: headers});
+ }
 }

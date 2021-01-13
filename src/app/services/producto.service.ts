@@ -10,7 +10,7 @@ import { urlBase } from './global';
 })
 export class ProductoService {
 
-  private url: string = `${urlBase}/proveedor/productos`;
+  private url: string = `${urlBase}/products`;
   
   constructor(
     private http : HttpClient
@@ -44,20 +44,7 @@ updateProducto(producto: Producto):Observable<Producto> {
 }
 
 
-deleteAnuncio(producto: Producto):Observable<any> {    
-  
-  // Es obligatorio utilizar el header Content-Type: application/json, los compañeros del backend asi lo reciben
-  let headers = new HttpHeaders({
-    'Authorization': '',
-    'Content-type': 'application/json'
-  });
-    
- // this.http.get<Producto[]>(`${this.url}`,{ headers: headers});
 
-  return this.http.delete<Producto[]>(`${this.url}`,{ headers: headers})
-  
-}
-   
   //-----------metodos del servicio de prueba------
  /* getProducto(id : string) : Producto{
     for(let producto of productos){

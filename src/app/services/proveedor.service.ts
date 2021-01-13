@@ -3,11 +3,14 @@ import {proveedoresData} from '../models/prueba-proveedor-data'
 import Swal from 'sweetalert2';
 import { Proveedor } from '../models/proveedor';
 import { proveedores } from '../components/proveedores/listado-proveedor/proveedor-data';
+import { urlBase } from './global';
 
 @Injectable({
   providedIn: 'any'
 })
 export class ProveedorService {
+
+  private url: string = `${urlBase}/providers`;
 
   constructor() {
 
