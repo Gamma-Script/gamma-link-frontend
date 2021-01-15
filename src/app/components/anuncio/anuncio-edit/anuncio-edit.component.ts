@@ -1,11 +1,13 @@
-import { Component, Host, Input, OnInit, Optional } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { Anuncio } from 'src/app/models/anuncio';
 import { Usuario } from 'src/app/models/Usuario';
 import { AnuncioService } from 'src/app/services/anuncio.service';
-import { AnuncioContentComponent } from '../anuncio-content/anuncio-content.component';
-import { AnuncioListComponent } from '../anuncio-list/anuncio-list.component';
+import Swal from 'sweetalert2';
+import { $ } from 'protractor';
+import { AngularFileUploaderComponent } from 'angular-file-uploader';
+import { urlBaseImagen } from '../../../services/global';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-anuncio-edit',
@@ -14,92 +16,119 @@ import { AnuncioListComponent } from '../anuncio-list/anuncio-list.component';
 })
 export class AnuncioEditComponent implements OnInit {
 
-anunciolist : AnuncioListComponent;
-
-  idEdit : number;
-  anuncioEdit : Anuncio;
+  @Input() anuncioEdit: Anuncio = new Anuncio(0,'','','','','',0,0);
+  anunciosList: Anuncio[] = null;
   checkForm;
 
+  // Upload Image
+  @ViewChild('fileUpload1') private fileUpload1:  AngularFileUploaderComponent;
+  public afuConfig = {
+    multiple: false,
+    formatsAllowed: ".jpg,.png",
+    maxSize: "15",
+    uploadAPI:  {
+      url: `${urlBaseImagen}/uploadImage`,
+      method: "POST",
+      headers: {
+        "Authorization" : ``
+      },
+      params: {
+        'type': 3
+      }
+    },
+    theme: "dragNDrop",
+    hideResetBtn: true,
+    hideSelectBtn: true,
+    replaceTexts: {
+      selectFileBtn: 'Seleccione la imagen',
+      uploadBtn: 'Subir Imagen',
+      dragNDropBox: 'Arrastra la imagen',
+      attachPinBtn: 'Selecciona la imagen',
+      afterUploadMsg_success: 'Subida Exitosa',
+      afterUploadMsg_error: 'Algo ha fallado, intenta nuevamente!'
+    }
+  };
+
   constructor(
-    private anuncioService : AnuncioService,
-    public formBuilder :FormBuilder
+    private anuncioService: AnuncioService,
+    public formBuilder: FormBuilder
   ) {
+
     //Validators para los datos de los imputs con los nombres de los elementos del formulario
     this.checkForm = this.formBuilder.group
-    ({
-      nombre : [,Validators.required],
-     descripcion :  [,Validators.required],
-     fechaPublicacion :  [,Validators.required],
-     fechaDeBaja : [, Validators.required],
-     urlImagen : ['', Validators.required]
-    });
-    
-
-  } 
-
-  //metodo que limpia el formulario
-clear()
-{
-this.checkForm.reset();  
-}
-
-  ngOnInit(): void {
-
-    console.log("Se inicio el componente");
+      ({
+        nombre: [, Validators.required],
+        descripcion: [, Validators.required],
+        fechaPublicacion: [, Validators.required],
+        fechaDeBaja: [, Validators.required],
+        urlImagen: ['',]
+      });
   }
 
-  
-//-----------metodo que inicializa el formulario pero con los datos del objeto a editar------
-private inicio()
-{
+  ngOnInit(): void {
+  }
 
-//Validators para los datos de los imputs con los nombres de los elementos del formulario
-this.checkForm = this.formBuilder.group
-({
-  nombre : [this.anuncioEdit.nombre,Validators.required],
- descripcion :  [this.anuncioEdit.descripcion,Validators.required],
- fechaPublicacion :  [this.anuncioEdit.fechaPublicacion,Validators.required],
- fechaDeBaja : [this.anuncioEdit.fechaBaja, Validators.required],
- urlImagen : [, Validators.required]
-});
+  loadData() {
+    this.anunciosList = null;
+    this.checkForm = this.formBuilder.group({
+      nombre: [this.anuncioEdit.nombre, Validators.required],
+      descripcion: [this.anuncioEdit.descripcion, Validators.required],
+      fechaPublicacion: [this.anuncioEdit.fecha_publicacion, Validators.required],
+      fechaDeBaja: [this.anuncioEdit.fecha_baja, Validators.required],
+      urlImagen: [,]
+    });
 
-}
-
-//------------------------------Metodo que asigna el objeto anuncio a edita, en funcion de su id-------------------------
-public asignar(id:number)
-{
-this.idEdit = id;
-this.anuncioEdit = this.anuncioService.getAnuncio(this.idEdit); 
-
-console.log("se recibio esto:");
-console.log(this.anuncioEdit);
-
-this.inicio();
-}
-
+    (function ($) {
+      "use strict";
+      $('#editModal').modal('show');
+    })(jQuery);
+  }
 
   //Metodo que manda los parametros para crear un nuevo anuncio y actualizarlo de un anuncio 
-onSubmit (data)
-{
-  //por defecto, al crear y al editar un anuncio, el estado (si esta publicado o en baja, es de 0, es decir en baja)
-let aNew = new Anuncio
-(
-this.anuncioEdit.idAnuncio,
-data.nombre,
-data.descripcion,
-data.urlImagen,
-data.fechaPublicacion,
-data.fechaDeBaja,
-0,
-this.anuncioEdit.proveedor
-);
+  onSubmit(data) {
+    this.anuncioEdit.nombre = data.nombre;
+    this.anuncioEdit.descripcion = data.descripcion;
+    this.anuncioEdit.fecha_baja = data.fechaDeBaja;
+    this.anuncioEdit.fecha_publicacion = data.fechaPublicacion;
+    this.clear();
 
-this.clear();
+    (function ($) {
+      "use strict";
+      $('#editModal').modal('hide');
+    })(jQuery);
 
-this.anuncioService.update(aNew);
+    this.anuncioService.updateAnuncio(this.anuncioEdit).subscribe({
+      next: (data) => {
+        this.getAnuncios();
+        this.clear();
+        this.anunciosList = null;
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'El anuncio ha sido actualizado correctamente.',
+          showConfirmButton: false,
+          timer: 2000
+        });
+      },
+      error: (e) => console.log(e)
+    });
+  }
 
-}
+  imageUpload(datos){
+    this.anuncioEdit.imagen = datos.body.image;
+  }
 
+  //metodo que limpia el formulario
+  clear() {
+    this.checkForm.reset();
+    this.fileUpload1.resetFileUpload();
+  }
 
-
+  getAnuncios(){
+    let proveedor = JSON.parse(localStorage.getItem('proveedor'));
+    this.anuncioService.getAnuncios(proveedor.id).subscribe({
+      next: (list) => this.anunciosList = list,
+      error: (e) => console.log(e)
+    });
+  }
 }

@@ -10,26 +10,51 @@ import { urlBase } from './global';
 export class CategoriasService {
 
   private url: string = `${urlBase}/categories`;
+  private urlProveedor: string = `${urlBase}/providers`;
 
   constructor(
-    private http : HttpClient
+    private http: HttpClient
   ) { }
 
-  getCategorias(id):Observable<Categoria[]>{
-    let headers = new HttpHeaders({
-      'Authorization': '',
-      'Content-type': 'application/json'
-    }); 
-
-    return this.http.post<Categoria[]>(`${this.url}`,{ headers: headers});
-  } 
-
-  getCategoria(ident : string) {
+  getCategorias(): Observable<Categoria[]> {
     let headers = new HttpHeaders({
       'Authorization': '',
       'Content-type': 'application/json'
     });
 
-    return this.http.get<Categoria>(`${this.url}/${ident}`,{ headers: headers});
- }
+    return this.http.get<Categoria[]>(`${this.url}`, { headers: headers });
+  }
+
+  getCategoriasByProvider(idProveedor: number): Observable<Categoria[]> {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+
+    return this.http.get<Categoria[]>(`${this.urlProveedor}/${idProveedor}/categorias`, { headers: headers });
+  }
+  getCategoria(id: number) {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+
+    return this.http.get<Categoria>(`${this.url}/${id}`, { headers: headers });
+  }
+
+  updateCategory(categoria:Categoria) {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+    return this.http.put<Categoria>(`${this.url}/${categoria.id}`,categoria, { headers: headers });
+  }
+
+  addCategory(categoria:Categoria){
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+    return this.http.post<Categoria>(`${this.url}`,categoria, { headers: headers });
+  }
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
-import { anuncios } from '../components/anuncio/anuncio-list/anuncio-data';
 import { Anuncio } from '../models/anuncio';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { urlBase } from './global';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -12,104 +12,137 @@ import { Observable } from 'rxjs';
 })
 export class AnuncioService {
 
-
-
-//---------------------------------------------------------------
-
+  //---------------------------------------------------------------
   private url: string = `${urlBase}/providers/anuncios`;
+  private urlProveedor: string = `${urlBase}/provider/anuncios`
+  private token: string = '';
 
   constructor(
-    private http : HttpClient
+    private http: HttpClient
   ) { }
 
-  getsAnunciosPrueba():Anuncio[]
-  {
-    return anuncios;
-  }
-  getsAnuncios():Observable<Anuncio[]>
-  {
+  getAnuncios(idProveedor?): Observable<Anuncio[]> {
     let headers = new HttpHeaders({
-      'Authorization': '',
+      'Authorization': `${this.token}`,
       'Content-type': 'application/json'
     });
 
-    return this.http.get<Anuncio[]>(`${this.url}`,{ headers: headers});
-  } 
- //---------------------------------------------------------------  
-  getAnuncio(id: number):Anuncio
-  {
-  let i : number = 0;
-  let bandera : number = 0;
-  let idPrueba : number;
-  let anuncio : Anuncio;  
+    if(idProveedor)return this.http.get<Anuncio[]>(`${this.urlProveedor}/${idProveedor}/anuncios`, { headers: headers });
 
-    while(bandera == 0)
-    {
-      
-      idPrueba = anuncios[i].idAnuncio;
-      console.log(idPrueba);
-
-      if(idPrueba == id)
-      {
-        anuncio = anuncios[i];
-        bandera = 1;
-      }
-      else
-      {
-        i++;
-      }
-    }
-    return anuncio;
-
-  }
-//---------------------------------------------------------------
-  update(anuncio :Anuncio)
-  {
-    console.log("Se llego al servicio");
-    for(var i = 0; i < anuncios.length; i++)
-    {
-      if(anuncio.idAnuncio == anuncios[i].idAnuncio)
-      {
-        anuncios[i] = anuncio
-      }
-    }
-   
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'El anuncio ha sido actualizado correctamente :3',
-      showConfirmButton: false,
-      timer: 2000
-    })
-
-    console.log(this.getsAnuncios());
-  }
-
-  deleteAnuncio(anuncio :Anuncio):Observable<any> {    
-  
-    let headers = new HttpHeaders({
-      'Authorization': '',
-      'Content-type': 'application/json'
-    });
-      
-     
-    return this.http.delete<Anuncio[]>(`${this.url}`,{ headers: headers})
+    return this.http.get<Anuncio[]>(`${urlBase}/${idProveedor}/anuncios`, { headers: headers });
     
   }
-//---------------------------------------------------------------
-addAnuncio(anuncio: Anuncio)
-{
-  console.log("El anuncio ha sido agregado");
-  console.log(anuncio)
-  
-  Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: 'El anuncio ha sido agregado correctamente :3',
-    showConfirmButton: false,
-    timer: 2000
-  })
-anuncios.push(anuncio);
-}
-//---------------------------------------------------------------
+
+  //---------------------------------------------------------------  
+  getAnuncio(id: number): Observable<Anuncio> {
+    let headers = new HttpHeaders({
+      'Authorization': `${this.token}`,
+      'Content-type': 'application/json'
+    });
+
+    return this.http.get<Anuncio>(`${this.url}/${id}`, { headers: headers }).pipe(
+      catchError(e => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Ooops',
+          text: 'A ocurrido un error. Estamos intentando resolverlo.'
+        });
+        return throwError(e);
+      })
+    );
+  }
+  //---------------------------------------------------------------
+  updateAnuncio(anuncio: Anuncio) {
+    let headers = new HttpHeaders({
+      'Authorization': `${this.token}`,
+      'Content-type': 'application/json'
+    });
+
+    return this.http.put<Anuncio>(`${this.url}/${anuncio.id}`, anuncio,{ headers: headers }).pipe(
+      catchError(e => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Ooops',
+          text: 'A ocurrido un error. Estamos intentando resolverlo.'
+        });
+        return throwError(e);
+      })
+    );
+  }
+
+  deleteAnuncio(id: number): Observable<any> {
+
+    let headers = new HttpHeaders({
+      'Authorization': `${this.token}`,
+      'Content-type': 'application/json'
+    });
+
+    return this.http.delete(`${this.url}/${id}`, { headers: headers }).pipe(
+      catchError(e => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Ooops',
+          text: 'A ocurrido un error. Estamos intentando resolverlo.'
+        });
+        return throwError(e);
+      })
+    );
+
+  }
+  //---------------------------------------------------------------
+  addAnuncio(anuncio: Anuncio): Observable<any> {
+
+    let headers = new HttpHeaders({
+      'Authorization': `${this.token}`,
+      'Content-type': 'application/json'
+    });
+
+    return this.http.post(`${this.url}`, anuncio, { headers: headers }).pipe(
+      catchError(e => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Ooops',
+          text: 'A ocurrido un error. Estamos intentando resolverlo.'
+        });
+        return throwError(e);
+      })
+    );
+  }
+
+  subidaAnuncio(id){
+    let headers = new HttpHeaders({
+      'Authorization': `${this.token}`,
+      'Content-type': 'application/json'
+    });
+
+    return this.http.put(`${this.url}/${id}/subida`, { headers: headers }).pipe(
+      catchError(e => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Ooops',
+          text: 'A ocurrido un error. Estamos intentando resolverlo.'
+        });
+        return throwError(e);
+      })
+    );
+  }
+
+  bajadaAnuncio(id){
+    let headers = new HttpHeaders({
+      'Authorization': `${this.token}`,
+      'Content-type': 'application/json'
+    });
+
+    return this.http.put(`${this.url}/${id}/baja`, { headers: headers }).pipe(
+      catchError(e => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Ooops',
+          text: 'A ocurrido un error. Estamos intentando resolverlo.'
+        });
+        return throwError(e);
+      })
+    );
+  }
+  //---------------------------------------------------------------
 }

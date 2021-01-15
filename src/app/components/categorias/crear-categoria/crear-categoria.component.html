@@ -2,7 +2,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">crear categoria</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Crear Categoria</h5>
           <button (click)="cancelar()" type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -26,11 +26,18 @@
                     <textarea class="form-control"   rows="4" formControlName="descripcion"></textarea>
                     <small *ngIf="formulario.controls.descripcion.touched && formulario.controls.descripcion.invalid" class="ml-2 text-danger">Campo requerido</small>
                 </div>
-            </div>   
+            </div>
+
+            <div class="container-fluid mb-4 text-right ml-2 mt-2">
+              <angular-file-uploader #fileUpload2 [config]="afuConfig" (ApiResponse)="imageUpload($event)">
+              </angular-file-uploader>
+              <img src="http://gamma-link.software:9000/images/getImage/{{categoria.imagen}}/4" *ngIf="categoria.imagen" alt="" class="rounded mx-auto d-block mt-4" style="height: 10rem;">
+            </div> 
+
             <div class="modal-footer">
-              <button (click)="cancelar()"  type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+              <button (click)="cancelar()"  type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
               <div class="form-group">
-                <button (click)="crear(categoria)" type="button" class="btn btn-primary" [disabled]="!formulario.valid" >Crear</button>
+                <button (click)="onSubmit(formulario.value)" type="button" class="btn btn-success" [disabled]="!formulario.valid">Crear Categoria</button>
               </div>
             </div>
           </div>

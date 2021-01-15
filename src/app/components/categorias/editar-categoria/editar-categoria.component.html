@@ -2,12 +2,12 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar categoria</h5>
-          <button (click)="cancelar()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Categoria</h5>
+          <button (click)="cancelar()" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancelar()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form [formGroup]="formulario" >
+        <form [formGroup]="formulario">
           <div class="modal-body">
             <div class="form-group row">
                 <div class="col-4">
@@ -26,11 +26,16 @@
                     <textarea class="form-control"   rows="4" formControlName="descripcion"></textarea>
                     <small *ngIf="formulario.controls.descripcion.touched && formulario.controls.descripcion.invalid" class="ml-2 text-danger">Campo requerido</small>
                 </div>
-            </div>   
+            </div>  
+            <div class="container-fluid mb-4 text-right ml-2 mt-2">
+              <angular-file-uploader #fileUpload1 [config]="afuConfig" (ApiResponse)="imageUpload($event)">
+              </angular-file-uploader>
+              <img src="http://gamma-link.software:9000/images/getImage/{{categoriaEditar.imagen}}/4" *ngIf="categoriaEditar.imagen" alt="" class="rounded mx-auto d-block mt-4" style="height: 10rem;">
+            </div> 
             <div class="modal-footer">
-              <button (click)="cancelar()"  type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+              <button (click)="cancelar()"  type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
               <div class="form-group">
-                <button (click)="editar(categoriaEditar.nombre)" type="button" class="btn btn-primary" [disabled]="!formulario.valid" >Editar</button>
+                <button type="button" (click)="onSubmit(formulario.value)" class="btn btn-success" [disabled]="!formulario.valid">Actualizar Categoria</button>
               </div>
             </div>
           </div>

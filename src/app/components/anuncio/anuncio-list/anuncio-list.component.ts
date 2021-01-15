@@ -1,12 +1,13 @@
-import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
-import { FormBuilder} from '@angular/forms';
+import { Component, ComponentFactoryResolver, ComponentRef, Input, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Anuncio } from 'src/app/models/anuncio';
 import { AnuncioService } from 'src/app/services/anuncio.service';
 import Swal from 'sweetalert2';
-import { anuncios } from './anuncio-data';
 import { $ } from 'protractor';
 import { OutgoingMessage } from 'http';
-declare var jQuery:any;
+import { DynamicDirective } from 'src/app/directives/dynamic.directive';
+import { AnuncioEditComponent } from '../anuncio-edit/anuncio-edit.component';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-anuncio-list',
@@ -15,68 +16,123 @@ declare var jQuery:any;
 })
 export class AnuncioListComponent implements OnInit {
 
-  anuncios : Anuncio[];
-  @Output() idEdit = new EventEmitter <number>();
+  @ViewChild(DynamicDirective, { static: false }) appDynamic: DynamicDirective;
+
+  anuncios: Anuncio[];
+  componentRef: ComponentRef<any> = null;
 
   constructor(
-    private anuncioService : AnuncioService,
-    public formBuilder : FormBuilder
-    ) {}
+    private anuncioService: AnuncioService,
+    public formBuilder: FormBuilder,
+    private componentFactoryResolver: ComponentFactoryResolver
+  ) { }
 
-//----------------inicio del componente-------------------------------
+  //----------------inicio del componente-------------------------------
   ngOnInit(): void {
-    this.anuncios = this.anuncioService.getsAnunciosPrueba();
+    this.getAnuncios();
   }
-//-----------------metodo para la propiedad click de editar------------------------------------
-  getAnuncio(idAnuncio : number)
-  {
 
-    console.log("Estoy en el metodo y se emitio algo");
-    this.idEdit.emit(idAnuncio);
-    
-    (function($){
-      "use strict";
-      $('#exampleModal').modal('show');
-  })(jQuery);
-    
-  //--------------------------Metodo que da de baja los anuncios al hacer click------------------------------------
-    this.anuncioService.getsAnuncios().subscribe(
-      anuncios => {
-        this.anuncios = anuncios;
-        console.log(this.anuncios);
-      },
-      (error : any) => {
-        console.log(error);
+  //-----------------metodo para la propiedad click de editar------------------------------------
+  getAnuncio(idAnuncio: number) {
+    // Se agrego componente dinamico para poder manejar la edicion
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(AnuncioEditComponent);
+    const viewContainerRef = this.appDynamic.viewContainerRef;
+
+    if (this.componentRef == null) this.componentRef = viewContainerRef.createComponent<AnuncioEditComponent>(componentFactory);
+    this.anuncioService.getAnuncio(idAnuncio).subscribe(
+      (anuncio) => {
+        this.componentRef.instance.anuncioEdit = anuncio;
+        this.componentRef.instance.loadData();
       }
-    )
-    
+    );
   }
 
-  darDeBaja(anuncio:Anuncio)
-  {
+  darDeBaja(anuncio: Anuncio) {
+    let mensaje =''
+    if(anuncio.estado == 0){ 
+      mensaje = 'Publicar'
+    }else {
+      mensaje = 'Dar de baja';
+    }
     Swal.fire({
-      title: 'Dar de baja',
-      text: "Estas seguro que deseas dar de baja este anuncio",
+      title: `${mensaje}`,
+      text: `Estas seguro que deseas ${mensaje} este anuncio`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, dar de baja!'
+      confirmButtonText: `Si, ${mensaje}` 
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Anuncio dado de baja:',
-          'El anuncio se ha dado de baja de manera exitosa',
+          'Anuncio actualizado',
+          'La accion se efectuo de manera exitosa',
           'success'
-        )
-        anuncio.estado = 0;
-        this.anuncioService.update(anuncio);
+        );
+        if(anuncio.estado == 0){
+          this.anuncioService.subidaAnuncio(anuncio.id).subscribe({
+            next: () => {
+              this.getAnuncios();
+            }
+          });
+        }else {
+          this.anuncioService.bajadaAnuncio(anuncio.id).subscribe({
+            next: () => {
+              this.getAnuncios();
+            }
+          });
+        }
       }
     })
+  }
 
+  deleteAnuncio(anuncio) {
+    Swal.fire({
+      title: 'Eliminar Anuncio',
+      text: `¿Esta seguro que desea eliminar el anuncio ${anuncio.nombre}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.anuncioService.deleteAnuncio(anuncio.id).subscribe({
+          next: (data) => {
+            this.getAnuncios();
+          },
+          error: (e) => console.log(e)
+        });
+        Swal.fire(
+          'Elimando Exitosamente',
+          'El anuncio ha sido eliminado de manera exitosa',
+          'success'
+        );
+      }
+    })
+  }
 
+  getAnuncios(data?) {
+    let proveedor = JSON.parse(localStorage.getItem('proveedor'));
+    this.anuncioService.getAnuncios(proveedor.id).subscribe({
+      next: (list) => {
+        if (this.componentRef != null) this.componentRef.instance.anunciosList = null;
+        this.anuncios = list;
+      },
+      error: (e) => console.log(e)
+    });
+  }
 
+  ngAfterContentChecked() {
+    if (this.componentRef != null) {
+      if(this.componentRef.instance.anunciosList != null) {
+        this.anuncios = this.componentRef.instance.anunciosList;
+      }
+    }
 
   }
 
+  ngOnDestoy() {
+    this.componentRef.destroy();
+  }
 }

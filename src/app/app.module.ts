@@ -32,13 +32,16 @@ import { CrearCategoriaComponent } from './components/categorias/crear-categoria
 import { LoginComponent } from './components/login/login.component';
 import { ListadoProveedorComponent } from './components/proveedores/listado-proveedor/listado-proveedor.component';
 import { FiltrosProveedorComponent } from './components/proveedores/filtros-proveedor/filtros-proveedor.component';
+import { HomeComponent } from './components/home/home.component';
+import { DynamicDirective } from './directives/dynamic.directive';
+import { AngularFileUploaderModule } from "angular-file-uploader";
 
 // Authentication
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from '../environments/environment';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
-import { HomeComponent } from './components/home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -69,7 +72,8 @@ import { HomeComponent } from './components/home/home.component';
     CrearCategoriaComponent,
     LoginComponent,
     ListadoProveedorComponent,
-    FiltrosProveedorComponent
+    FiltrosProveedorComponent,
+    DynamicDirective
 
   ],
   imports: [
@@ -82,6 +86,7 @@ import { HomeComponent } from './components/home/home.component';
     SimpleNotificationsModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
+    AngularFileUploaderModule,
     AuthModule.forRoot({
       ...env.auth,
     }), 
