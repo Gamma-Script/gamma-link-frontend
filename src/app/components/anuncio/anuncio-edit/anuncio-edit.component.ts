@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Anuncio } from 'src/app/models/anuncio';
-import { Usuario } from 'src/app/models/Usuario';
 import { AnuncioService } from 'src/app/services/anuncio.service';
 import Swal from 'sweetalert2';
 import { $ } from 'protractor';
