@@ -1,10 +1,10 @@
 export class Proveedor {
 
     constructor(
-        public idProveedor: number,
-        public usuario: number,
-        public nombreProveedor: string,
-        public url: string,
-        public descripcionProveedor: string
+        public id: number,
+        public user_id: number,
+        public nombre: string,
+        public imagen: string,
+        public descripcion: string
     ) {}
 }

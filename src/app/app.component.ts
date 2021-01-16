@@ -8,8 +8,10 @@ declare var jQuery:any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
   title = 'gamma-link-frontend';
-
+  cliente = JSON.parse(localStorage.getItem('cliente'));
+  proveedor = JSON.parse(localStorage.getItem('proveedor'));
 
   ngOnInit(){
     // SCRIPT PARA SIDE BAR TOGGLE

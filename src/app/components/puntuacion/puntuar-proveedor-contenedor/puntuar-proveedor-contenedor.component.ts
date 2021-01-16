@@ -14,7 +14,7 @@ export class PuntuarProveedorContenedorComponent implements OnInit {
   puntuaciones:Puntuacion[];
 
   constructor(private proveedorService:ProveedorService,private puntuacionService:PuntuacionService) {
-    this.proveedorPadre=this.proveedorService.getProveedor(1);
+    this.proveedorService.getProveedor(1);
     this.puntuaciones=this.puntuacionService.getPuntuaciones(this.proveedorPadre);
    }
 

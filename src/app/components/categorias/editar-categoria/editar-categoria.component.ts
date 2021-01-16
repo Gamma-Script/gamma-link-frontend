@@ -6,6 +6,9 @@ import { Categoria } from 'src/app/models/categorias';
 import { AngularFileUploaderComponent } from 'angular-file-uploader';
 import { urlBaseImagen } from '../../../services/global';
 import { CategoriasService } from 'src/app/services/categorias.service';
+import Swal from 'sweetalert2';
+import { $ } from 'protractor';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-editar-categoria',
@@ -87,7 +90,19 @@ export class EditarCategoriaComponent implements OnInit, OnChanges {
     console.log(this.categoriaEditar);
     this.categoryService.updateCategory(this.categoriaEditar).subscribe({
       next: () => {
+        (function ($) {
+          "use strict";
+          $('#editarCategoriaModal').modal('hide');
+        })(jQuery);
         this.eventEmitEditar.emit();
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'La categoria se actualizo de manera exitosa',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        this.cancelar();
       },
       error: (e) => console.log(e)
     });

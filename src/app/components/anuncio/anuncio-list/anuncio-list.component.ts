@@ -3,10 +3,10 @@ import { FormBuilder } from '@angular/forms';
 import { Anuncio } from 'src/app/models/anuncio';
 import { AnuncioService } from 'src/app/services/anuncio.service';
 import Swal from 'sweetalert2';
-import { $ } from 'protractor';
 import { OutgoingMessage } from 'http';
 import { DynamicDirective } from 'src/app/directives/dynamic.directive';
 import { AnuncioEditComponent } from '../anuncio-edit/anuncio-edit.component';
+import { $ } from 'protractor';
 declare var jQuery: any;
 
 @Component({
@@ -64,11 +64,14 @@ export class AnuncioListComponent implements OnInit {
       confirmButtonText: `Si, ${mensaje}` 
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Anuncio actualizado',
-          'La accion se efectuo de manera exitosa',
-          'success'
-        );
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'La accion se efectuo de manera exitosa',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        
         if(anuncio.estado == 0){
           this.anuncioService.subidaAnuncio(anuncio.id).subscribe({
             next: () => {
@@ -103,11 +106,13 @@ export class AnuncioListComponent implements OnInit {
           },
           error: (e) => console.log(e)
         });
-        Swal.fire(
-          'Elimando Exitosamente',
-          'El anuncio ha sido eliminado de manera exitosa',
-          'success'
-        );
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'El anuncio ha sido eliminado de manera exitosa',
+          showConfirmButton: false,
+          timer: 2000
+        });
       }
     })
   }

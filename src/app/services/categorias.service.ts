@@ -42,6 +42,15 @@ export class CategoriasService {
     return this.http.get<Categoria>(`${this.url}/${id}`, { headers: headers });
   }
 
+  deleteCategory(id): Observable<Categoria>{
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+
+    return this.http.delete<Categoria>(`${this.url}/${id}`, { headers: headers });
+  }
+
   updateCategory(categoria:Categoria) {
     let headers = new HttpHeaders({
       'Authorization': '',
@@ -56,5 +65,13 @@ export class CategoriasService {
       'Content-type': 'application/json'
     });
     return this.http.post<Categoria>(`${this.url}`,categoria, { headers: headers });
+  }
+
+  findCategories(nombre):Observable<Categoria[]>{
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+    return this.http.get<Categoria[]>(`${this.url}/buscar/${nombre}`, { headers: headers });
   }
 }

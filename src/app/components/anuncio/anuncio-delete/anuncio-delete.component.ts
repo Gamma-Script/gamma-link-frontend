@@ -30,7 +30,8 @@ onSuccess(){
         title: 'Eliminar',
         text: `El Anuncio ${this.anuncio.name} ha sido eliminado`,
         icon: 'success',
-        showConfirmButton: true
+        showConfirmButton: false,
+        timer: 2000
     })
 }
 

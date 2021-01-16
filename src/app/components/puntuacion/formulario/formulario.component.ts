@@ -18,7 +18,7 @@ export class FormularioComponent implements OnInit {
     this.formulario=this.formBuilder.group({
       comentario:['',Validators.required]
     })
-    this.proveedor=this.proveedorService.getProveedor(1);
+    this.proveedorService.getProveedor(1);
    }
 
   ngOnInit(): void {

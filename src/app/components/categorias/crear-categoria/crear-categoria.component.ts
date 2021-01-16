@@ -5,6 +5,9 @@ import { Categoria } from 'src/app/models/categorias';
 import { urlBaseImagen } from '../../../services/global';
 import { AngularFileUploaderComponent } from 'angular-file-uploader';
 import { CategoriasService } from 'src/app/services/categorias.service';
+import Swal from 'sweetalert2';
+import { $ } from 'protractor';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-crear-categoria',
@@ -59,6 +62,8 @@ export class CrearCategoriaComponent implements OnInit {
   cancelar() {
     this.formulario.reset();
     this.inicializarForm();
+    this.categoria = new Categoria(0, null, '', '', '', 0);
+    this.fileUpload2.resetFileUpload();
   }
 
   onSubmit(data) {
@@ -68,7 +73,21 @@ export class CrearCategoriaComponent implements OnInit {
 
     this.categoryService.addCategory(this.categoria).subscribe({
       next: () => {
+
+        (function ($) {
+          "use strict";
+          $('#crearCategoriaModal').modal('hide');
+        })(jQuery);
+
         this.eventEmitCrear.emit();
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'La categoria se creó de manera exitosa',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        this.cancelar();
       },
       error: (e) => console.log(e)
     });

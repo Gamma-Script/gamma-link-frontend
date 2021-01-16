@@ -1,10 +1,10 @@
 <!--Buscador-->
-
-<form class="form-inline container d-flex justify-content-center md-form form-sm mt-4">
+<form class="form-inline container d-flex justify-content-center md-form form-sm mt-4" *ngIf="!proveedor">
     <i class="fas fa-search" aria-hidden="true"></i>
-    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Buscar" git aria-label="Search">
+    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Buscar categorias" git
+        aria-label="Search" (keyup)="finder()" name="nombreBuscador" [(ngModel)]="nombreBuscador">
 </form>
-<div class="container mt-4 row text-right">
+<div class="container mt-4 row text-right" *ngIf="proveedor">
     <div class="col-1"></div>
     <div class="col">
         <button class="btn btn-success " data-toggle="modal" data-target="#crearCategoriaModal"><i
@@ -13,27 +13,35 @@
 </div>
 <div class="row">
     <div class="col-1"></div>
-    <div class="row container mt-3 mb-5 justify-content-center">
-        <div *ngFor="let categorias of categorias" class="card ml-4 mt-4" style="width: 21rem;">
-            <img src="http://gamma-link.software:9000/images/getImage/{{categorias.imagen}}/4" *ngIf="categorias.imagen" class="card-img-top"
-                alt="Imagen">
-            <div class="card-body">
-                <h5 class="card-title">{{categorias.nombre}}</h5>
-                <hr>
-                <h6 class="card-subtitle mb-2 text-muted">{{categorias.descripcion}}</h6>
-            </div>
-            <div class="card-footer text-right" *ngIf="proveedor">
-                <editar-categoria></editar-categoria>
-                <button (click)="editarCategoria(categorias)" class="btn btn-primary" data-toggle="modal"
-                    data-target="#editarCategoriaModal"><i class="far fa-edit"></i>Editar</button>
-                <app-deshabilitar-categoria></app-deshabilitar-categoria>
+    <div class="row mt-3 mb-5 justify-content-center">
+        <div *ngIf="categorias.length == 0">
+            <p class="text-muted h3">
+                NO SE ENCUENTRAN CATEGORIAS
+            </p>
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div *ngFor="let categorias of categorias" class="card ml-4 mt-4" style="width: 21rem;">
+                    <div *ngIf="categorias">
+                        <img class="card-img-top" src="http://gamma-link.software:9000/images/getImage/{{categorias.imagen}}/4"
+                            *ngIf="categorias.imagen" class="card-img-top" style="height: 15rem;" alt="Imagen">
+                        <div class="card-body">
+                            <h5 class="card-title">{{categorias.nombre}}</h5>
+                            <p class="card-text mb-2 text-muted">{{categorias.descripcion}}</p>
+                        </div>
+                        <div class="card-footer text-right" *ngIf="proveedor">
+                            <button (click)="editarCategoria(categorias)" class="btn btn-primary" data-toggle="modal"
+                                data-target="#editarCategoriaModal"><i class="far fa-edit"></i>Editar</button>
+                            <button class="btn btn-danger ml-2" (click)="delete(categorias)"><i class="far fa-trash-alt"></i>
+                                Eliminar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-
-
-<app-editar-categoria [categoriaEditar]="categoria" (eventEmitEdit)="getCategorias($event)"></app-editar-categoria>
+<app-editar-categoria [categoriaEditar]="categoria" (eventEmitEditar)="getCategorias($event)"></app-editar-categoria>
 <app-crear-categoria (eventEmitCrear)="getCategorias($event)"></app-crear-categoria>
 <router-outlet></router-outlet>

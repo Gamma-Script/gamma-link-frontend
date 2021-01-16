@@ -19,8 +19,8 @@
           <div class="card-body">
             <h3 class="card-title">{{anuncio.nombre}}</h3>
             <p class="card-text">{{anuncio.descripcion}}</p>
-            <span class="badge badge-success">Fecha baja: {{anuncio.fecha_publicacion}}</span>
-            <span class="badge badge-danger ml-4">Fecha pub.: {{anuncio.fecha_baja}}</span>
+            <span class="badge badge-secondary">Fecha baja: {{anuncio.fecha_publicacion}}</span>
+            <span class="badge badge-secondary ml-4">Fecha pub.: {{anuncio.fecha_baja}}</span>
           </div>
           <div class="card-footer text-right">
             <button type="button" class="btn btn-primary ml-4" (click)="getAnuncio(anuncio.id)">

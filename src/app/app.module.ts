@@ -32,6 +32,7 @@ import { CrearCategoriaComponent } from './components/categorias/crear-categoria
 import { LoginComponent } from './components/login/login.component';
 import { ListadoProveedorComponent } from './components/proveedores/listado-proveedor/listado-proveedor.component';
 import { FiltrosProveedorComponent } from './components/proveedores/filtros-proveedor/filtros-proveedor.component';
+import { DeshabilitarCategoriaComponent } from './components/categorias/deshabilitar-categoria/deshabilitar-categoria.component';
 import { HomeComponent } from './components/home/home.component';
 import { DynamicDirective } from './directives/dynamic.directive';
 import { AngularFileUploaderModule } from "angular-file-uploader";
@@ -73,6 +74,7 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
     LoginComponent,
     ListadoProveedorComponent,
     FiltrosProveedorComponent,
+    DeshabilitarCategoriaComponent,
     DynamicDirective
 
   ],
@@ -89,7 +91,7 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
     AngularFileUploaderModule,
     AuthModule.forRoot({
       ...env.auth,
-    }), 
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

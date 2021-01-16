@@ -62,7 +62,7 @@
                             </div>
                            
                             <div class="sb-sidenav-menu-heading">Catalogos</div>
-                            <a class="nav-link" [routerLink]="['anuncio/list']">
+                            <a class="nav-link" [routerLink]="['anuncio/list']" *ngIf="proveedor">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Anuncios
                               </a>

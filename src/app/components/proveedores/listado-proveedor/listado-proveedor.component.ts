@@ -16,8 +16,12 @@ export class ListadoProveedorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.proveedor = this.proveedorService.getProveedorLista();
-    console.log(this.proveedor);
+    this.proveedorService.getProveedores().subscribe({
+      next: (proveedores) => {this.proveedor = proveedores; 
+        console.log(this.proveedor);},
+      error: (e) => console.log(e)
+    });
+    
   }
 
 }
