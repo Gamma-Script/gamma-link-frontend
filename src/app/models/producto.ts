@@ -1,21 +1,13 @@
-import { Categoria } from '../models/categorias';
-import { Marca } from '../models/marca';
-
 export class Producto {
 
     constructor(
-        public name : string,
         public id : string,
-        public marca : string,
-        public categoria : string,
-        /*
-        public marca : Marca,
-        public categoria : Categoria,
-        */
+        public nombre : string,
+        public marca_id : number,
+        public categoria_id : number,
         public descripcion : string,
         public precio : number,
-        public imagen : string,
-        public habilitado: boolean = true
+        public imagen : string
     ){}
 
 }

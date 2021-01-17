@@ -17,8 +17,6 @@ import { ListProductosCotizacionComponent } from './components/producto/list-pro
 import { MoneyPipe } from './pipes/money.pipe';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GestionarProductosContainerComponent } from './components/producto/gestionar-productos-container/gestionar-productos-container.component';
-import { ListProductosComponent } from './components/producto/list-productos/list-productos.component';
 import { CrearProductoComponent } from './components/producto/crear-producto/crear-producto.component';
 import { EditarProductoComponent } from './components/producto/editar-producto/editar-producto.component';
 import { AnuncioListComponent } from './components/anuncio/anuncio-list/anuncio-list.component';
@@ -58,8 +56,6 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
     FormProductosCotizacionComponent,
     ListProductosCotizacionComponent,
     MoneyPipe,
-    GestionarProductosContainerComponent,
-    ListProductosComponent,
     CrearProductoComponent,
     EditarProductoComponent,
     AnuncioListComponent,

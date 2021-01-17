@@ -54,45 +54,34 @@
 </nav>
 
 <!-- lista de productos proveedor -->
-
-<div class="row container mt-4 mb-4">
-    <div *ngFor="let producto of productos" class="card" style="width: 18rem;">
-        <div class="card-body">     
-         <img src= {{producto.imagen}} class="card-img-top" alt="...">
-          <h5 class="card-title">{{producto.name}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{producto.id}}</h6><hr>
-          <p class="card-text">{{producto.marca}}</p>
-          <p class="card-text">{{producto.categoria}}</p>
-          <p class="card-text">{{producto.descripcion}}</p>
-          <p class="card-number">{{producto.precio | money}}</p>                 
-        </div>
-        <div class="card-footer text-right">
-            <button class="btn btn-success" type="submit">Ver</button>
-            <button class="btn ml-2 btn-danger">Editar</button>
-        </div>
+<div class="row">
+  <div class="col-1"></div>
+  <div class="row container mt-3 mb-5 justify-content-center">
+      <div *ngIf="productos.length == 0">
+          <p class="text-muted h3">
+              NO SE ENCUENTRAN PRODUCTOS
+          </p>
       </div>
-</div>
-
-<!-- lista de productos cliente -->
-
-<div class="row container mt-4 mb-4" >
-  <div *ngFor="let producto of productos" class="card" style="width: 18rem;" >
-      <ng-container *ngIf="producto.habilitado">
-        <div class="card-body">
-          <img src= {{producto.imagen}} class="card-img-top" alt="...">
-          <h5 class="card-title">{{producto.name}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{producto.id}}</h6><hr>
-          <p class="card-text">{{producto.marca}}</p>
-          <p class="card-text">{{producto.categoria}}</p>
-          <p class="card-text">{{producto.descripcion}}</p>
-          <p class="card-number">{{producto.precio | money}}</p>                 
-        </div>
-        <div class="card-footer text-right">
-            <button class="btn btn-success" type="submit">Ver</button>
-            <button (click)="pasar(producto)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Agregar</button>
-        </div>
-      </ng-container>
+      <div *ngFor="let producto of productos" class="card ml-4 mt-4" style="width: 21rem;">
+          
+          <img src="https://www.crecenegocios.com/wp-content/uploads/2011/04/tipos-de-ventas.jpg" class="card-img-top"
+              alt="Imagen">
+          <div class="card-body">
+              <h5 class="card-title">{{ producto.nombre }}</h5>
+              <hr>
+              <h6 class="card-subtitle mb-2 text-muted">{{ producto.descripcion }}</h6>
+              <h6> {{ producto.precio | money }} </h6>
+              <h6> {{ producto.marca_id }} </h6>
+              <h6> {{ producto.categoria_id }} </h6>
+          </div>
+          <div class="card-footer text-right">
+            <button type="button" class="btn btn-primary mr-2" (click)="edithProducto(producto)"><i class="fas fa-pencil-alt"></i> Editar</button>
+            <button type="button" class="btn btn-info" 
+            data-toggle="tooltip" data-placement="top" title="Agregar a lista de cotizacion" (click)="pasar(producto)" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fas fa-file-invoice-dollar"></i></button>
+          </div>
+      </div>
   </div>
 </div>
+
 <app-cotizacion-container *ngIf="p" [product]="p"></app-cotizacion-container>
 <router-outlet></router-outlet>

@@ -17,11 +17,11 @@ export class EditarProductoComponent implements OnInit {
 
   constructor(private router: Router, private fb: FormBuilder, private ps: ProductoService) { 
     this.checkForm =  this.fb.group({
-      nombre: [this.producto.name, Validators.required],
+      nombre: [this.producto.nombre, Validators.required],
       descripcion: [this.producto.descripcion],
       precio: [this.producto.precio, Validators.min(0.00)],
-      marca: [this.producto.marca],
-      categoria: [this.producto.categoria]
+      marca: [this.producto.marca_id],
+      categoria: [this.producto.categoria_id]
     }
     );
   }

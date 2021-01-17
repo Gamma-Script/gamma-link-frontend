@@ -14,41 +14,28 @@ export class ProductoContainerComponent implements OnInit {
   p: Producto;
 
   constructor(
-    private productoService : ProductoService
+    private productoService: ProductoService
   ) { }
 
-    
+
   ngOnInit(): void {
     this.getProductos();
   }
 
-  getProductos(){
+  getProductos() {
     this.productoService.getProductos().subscribe(
       productos => {
         this.productos = productos;
         console.log(this.productos);
       },
-      (error : any) =>{
+      (error: any) => {
         console.log(error);
       }
     );
   }
 
   //metodo para pasar el producto
-  pasar(prod: Producto): void{
+  pasar(prod: Producto): void {
     this.p = prod;
   }
-
-  
-/*
-  deleteContainer(value:any){
-    console.log("Container data: "+value);
-    this.productService.deleteProduct(value);
-  }
-
-  addContainer(data:Product){
-    this.productService.addProduct(data);
-    console.log(data);
-  }
-*/
 }
