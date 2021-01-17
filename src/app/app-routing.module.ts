@@ -27,11 +27,12 @@ import { ListadoProveedorComponent } from './components/proveedores/listado-prov
 
 const routes: Routes = [
   {
-    path: 'puntuar-proveedor', component: PuntuarProveedorContenedorComponent,
+    path: 'puntuar-proveedor/:id', component: PuntuarProveedorContenedorComponent,
     children: [{ path: '', component: ListadoComentariosComponent }, { path: '', component: FormularioComponent }]
   },
   { path: 'productos/cotizados', component: CotizacionContainerComponent },
   { path: 'productos', component: ProductoContainerComponent },
+  { path: 'categorias/:id', component: ListadoCategoriasComponent, children: [{ path: '', component: EditarCategoriaComponent }, { path: '', component: CrearCategoriaComponent }] },
   { path: 'categorias', component: ListadoCategoriasComponent, children: [{ path: '', component: EditarCategoriaComponent }, { path: '', component: CrearCategoriaComponent }] },
   { path: 'gestionar-productos', component: GestionarProductosContainerComponent },
   { path: 'editar-producto', component: EditarProductoComponent },

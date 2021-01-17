@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { proveedoresData } from '../models/prueba-proveedor-data'
 import Swal from 'sweetalert2';
 import { Proveedor } from '../models/proveedor';
 import { urlBase } from './global';
@@ -20,8 +19,12 @@ export class ProveedorService {
   }
   //servicios de prueba
   /////////////////////////////////////////////
-  getProveedor(id: number): Observable<Proveedor> {
-    return null;
+  getProveedor(id): Observable<Proveedor> {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+    return this.http.get<Proveedor>(`${this.url}/${id}`, { headers: headers });
   }
 
   getProveedores(): Observable<Proveedor[]> {
@@ -30,6 +33,14 @@ export class ProveedorService {
       'Content-type': 'application/json'
     });
     return this.http.get<Proveedor[]>(`${this.url}`, { headers: headers });
+  }
+
+  getProveedoresFiltro(values): Observable<Proveedor[]> {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+    return this.http.get<Proveedor[]>(`${this.url}/buscar/puntuacion/${values.rating}`, { headers: headers });
   }
 
 

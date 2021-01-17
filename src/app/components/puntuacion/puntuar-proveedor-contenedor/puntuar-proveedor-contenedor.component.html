@@ -1,15 +1,12 @@
-<div class="container px-lg-5 ">
+<div class="container px-lg-5 mt-4">
     <div class="row mx-lg-n5">
-      <div class="col py-3 px-lg-5 border bg-light">
-        <app-listado-comentarios >
-          [comentarios]="puntuaciones"
-        </app-listado-comentarios> 
+      
+      <div class="col py-3 border-right bg-light">
+        <app-listado-comentarios [puntuaciones]="puntuaciones"></app-listado-comentarios>
       </div>
-      <div class="col py-3 px-lg-5 border bg-light">
-        <app-formulario >
-          [proveedor]="proveedorPadre"
-        </app-formulario>
+
+      <div class="col py-3 border-left bg-light">
+        <app-formulario [proveedor]="proveedor" (eventEmitComentario)="getPuntuaciones($event)"></app-formulario>
       </div>
     </div>
-  </div>
-
+</div>

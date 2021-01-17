@@ -66,7 +66,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Anuncios
                               </a>
-                            <a class="nav-link" [routerLink]="['proveedores']">
+                            <a class="nav-link" [routerLink]="['proveedores']" *ngIf="!proveedor">
                               <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                               Proveedores
                             </a>

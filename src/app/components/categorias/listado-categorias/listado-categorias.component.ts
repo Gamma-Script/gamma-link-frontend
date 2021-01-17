@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Categoria } from 'src/app/models/categorias';
 import { CategoriasService } from '../../../services/categorias.service'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,7 +21,8 @@ export class ListadoCategoriasComponent implements OnInit {
 
   constructor(
     private categoriasService: CategoriasService,
-    private modal: NgbModal
+    private modal: NgbModal,
+    private activateRoute: ActivatedRoute
   ) { }
 
   editarCategoria(categoria: Categoria) {
@@ -51,24 +53,33 @@ export class ListadoCategoriasComponent implements OnInit {
 
   getCategorias(data?) {
     if (this.proveedor) {
-      this.categoriasService.getCategoriasByProvider(this.proveedor.id).subscribe(
-        categorias => {
-          this.categorias = categorias;
-        },
-        (error: any) => {
-          console.log(error);
-        }
-      );
+      this.getCategoriesByProviderId(this.proveedor.id);
     } else {
-      this.categoriasService.getCategorias().subscribe(
-        categorias => {
-          this.categorias = categorias;
-        },
-        (error: any) => {
-          console.log(error);
-        }
-      );
+      if (this.activateRoute.snapshot.paramMap.get("id")) {
+        let id = this.activateRoute.snapshot.paramMap.get("id");
+        this.getCategoriesByProviderId(id);
+      } else {
+        this.categoriasService.getCategorias().subscribe(
+          categorias => {
+            this.categorias = categorias;
+          },
+          (error: any) => {
+            console.log(error);
+          }
+        );
+      }
     }
+  }
+
+  getCategoriesByProviderId(id) {
+    this.categoriasService.getCategoriasByProvider(id).subscribe(
+      categorias => {
+        this.categorias = categorias;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
   }
 
   delete(categoria) {

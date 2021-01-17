@@ -1,21 +1,29 @@
-
 <router-outlet></router-outlet>
-<app-filtros-proveedor></app-filtros-proveedor>
-<div class="row container mt-3 mb-5 justify-content-left">
-    
-    <div *ngFor="let proveedor of proveedor" class="card ml-4 mt-4" style="width: 21rem;">
-        <img src="https://www.crecenegocios.com/wp-content/uploads/2011/04/tipos-de-ventas.jpg" class="card-img-top" alt="Imagen">
-        <div class="card-body">
-
-            
-
-            <a class="nav-link" [routerLink]="['../puntuar-proveedor']">
-                <h5 class="card-title">{{proveedor.nombre}}</h5>
-            </a>
-
-            <hr>
-            <h6 class="card-subtitle mb-2 text-muted">{{proveedor.descripcion}}</h6>
+<app-filtros-proveedor (eventEmiterFiltros)="getProveedoresFiltro($event)"></app-filtros-proveedor>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="row container mt-3 mb-5 justify-content-center">
+        <div *ngIf="proveedores.length == 0">
+            <p class="text-muted h3">
+                NO SE ENCUENTRAN PROVEEDORES
+            </p>
         </div>
-    
+        <div *ngFor="let proveedor of proveedores" class="card ml-4 mt-4" style="width: 21rem;">
+            <img src="https://www.crecenegocios.com/wp-content/uploads/2011/04/tipos-de-ventas.jpg" class="card-img-top"
+                alt="Imagen">
+            <div class="card-body">
+                <h5 class="card-title">{{proveedor.nombre}}</h5>
+                <hr>
+                <h6 class="card-subtitle mb-2 text-muted">{{proveedor.descripcion}}</h6>
+            </div>
+            <div class="card-footer text-right">
+                <button class="btn btn-info mr-4" [routerLink]="['../puntuar-proveedor', proveedor.id]" data-toggle="tooltip"
+                    data-placement="top" title="Puntuar Proveedor" *ngIf="cliente"><i class="fas fa-star"></i>
+                </button>
+                <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Ver Categorias" [routerLink]="['/categorias', proveedor.id]">
+                    <i class="fas fa-th-list"></i>
+                </button>
+            </div>
+        </div>
     </div>
 </div>

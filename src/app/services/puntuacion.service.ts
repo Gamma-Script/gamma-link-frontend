@@ -1,6 +1,7 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Proveedor } from '../models/proveedor';
-import {puntuacionData}  from '../models/prueba-puntuacion-data';
 import { Puntuacion } from '../models/puntuacion';
 import { urlBase } from './global';
 
@@ -11,18 +12,25 @@ export class PuntuacionService {
 
   private url: string = `${urlBase}/providers`;
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
   //service de prueba
   ///////////////////////////////////////////////////////
-  getPuntuaciones(proveedor:Proveedor):Puntuacion[]{
-    //let array:Puntuacion[];
+  getPuntuaciones(idProveedor): Observable<Puntuacion[]> {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
 
-    //for(var puntuacion of puntuacionData){
-      //if(proveedor==puntuacion.proveedor){
-        //array.push(puntuacion)
-      //}
-    //return array;
-    //}
-    return puntuacionData;
+    return this.http.get<Puntuacion[]>(`${this.url}/${idProveedor}/puntuaciones`, { headers: headers });
+  }
+
+  addComment(puntuacion: Puntuacion): Observable<any> {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+    return this.http.post(`${this.url}/puntuaciones`,puntuacion, { headers: headers });
   }
 }

@@ -3,6 +3,7 @@ import { Puntuacion } from 'src/app/models/puntuacion';
 ///////para pruebas se borrara despues///////////////////////////////////
 import { Proveedor } from 'src/app/models/proveedor';
 import { PuntuacionService } from 'src/app/services/puntuacion.service';
+import { ActivatedRoute } from '@angular/router';
 /////////////////////////////////////////////////////////////////////////
 @Component({
   selector: 'app-listado-comentarios',
@@ -10,13 +11,16 @@ import { PuntuacionService } from 'src/app/services/puntuacion.service';
   styleUrls: ['./listado-comentarios.component.css']
 })
 export class ListadoComentariosComponent implements OnInit {
-  @Input() comentarios:Puntuacion[];
-  comentarios2:Puntuacion[];
-  constructor(/*Tambien se borrara ->*/private puntuacionService:PuntuacionService/*<-*/) { 
+  @Input() puntuaciones: Puntuacion[];
+
+  constructor(
+    private puntuacionService: PuntuacionService,
+    private activateRoute: ActivatedRoute
+  ) {
   }
 
   ngOnInit(): void {
-    this.comentarios2=this.puntuacionService.getPuntuaciones(new Proveedor(1,1,"Nike","url","zapatos"));
+    
   }
 
 }

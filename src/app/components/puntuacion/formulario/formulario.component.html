@@ -1,11 +1,11 @@
 
-<form [formGroup]="formulario" >
+<form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.value)">
     <div class="form-group row">
       <div class="col">
-        <table class="table" >
+        <table class="table table-borderless" >
           <thead>
             <tr>
-              <th scope="col">Nombre</th>
+              <th scope="col">Proveedor</th>
               <th scope="col">Descripcion</th>
             </tr>
           </thead>
@@ -24,7 +24,7 @@
         </div>
         <div class="col">
             <ngb-rating [max]="5" [(rate)]="calificacion" [readonly]="false" ></ngb-rating>
-            <p>Rate:{{calificacion}} </p>
+            <p>Rate: {{calificacion}}</p>
         </div>
     </div>
 
@@ -38,7 +38,7 @@
 
     <div class="form-group row">
         <div class="col">
-            <button type="button" class="btn btn-danger ml-4">Cancelar</button>
+            <button type="button" class="btn btn-danger ml-4" [routerLink]="['/proveedores']">Cancelar</button>
         </div>
         <div class="col">
             <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid">Enviar</button>

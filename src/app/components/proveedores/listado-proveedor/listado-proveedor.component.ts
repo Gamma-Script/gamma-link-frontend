@@ -9,19 +9,32 @@ import { ProveedorService } from 'src/app/services/proveedor.service';
 })
 export class ListadoProveedorComponent implements OnInit {
 
-  proveedor : Proveedor[];
+  cliente = JSON.parse(localStorage.getItem('cliente'));
+  proveedor = JSON.parse(localStorage.getItem('proveedor'));
+  proveedores: Proveedor[];
 
   constructor(
-    private proveedorService : ProveedorService
+    private proveedorService: ProveedorService
   ) { }
 
   ngOnInit(): void {
-    this.proveedorService.getProveedores().subscribe({
-      next: (proveedores) => {this.proveedor = proveedores; 
-        console.log(this.proveedor);},
-      error: (e) => console.log(e)
-    });
-    
+    this.getProveedores();
   }
 
+  getProveedoresFiltro(data?) {
+    if (data.deptoId == 0 && data.rating == 0) this.getProveedores();
+    else {
+      this.proveedorService.getProveedoresFiltro(data).subscribe({
+        next: (proveedores) => this.proveedores = proveedores,
+        error: (e) => console.log(e)
+      });
+    }
+  }
+
+  getProveedores() {
+    this.proveedorService.getProveedores().subscribe({
+      next: (proveedores) => this.proveedores = proveedores,
+      error: (e) => console.log(e)
+    });
+  }
 }

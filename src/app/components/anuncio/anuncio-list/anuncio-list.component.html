@@ -7,7 +7,8 @@
           <h3>Anuncios registrados</h3>
         </div>
         <div class="col-md-3">
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newUserModal"><i class="far fa-plus-square"></i> Agregar anuncio</button>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newUserModal"><i
+              class="far fa-plus-square"></i> Agregar anuncio</button>
         </div>
       </div>
     </div>
@@ -15,7 +16,9 @@
       <!-- comienzo del card interno -->
       <div class="row mb-4">
         <div *ngFor="let anuncio of anuncios" class="card ml-4 mt-4" style="width: 30rem;">
-          <img class="card-img-top" *ngIf="anuncio.imagen" src="http://gamma-link.software:9000/images/getImage/{{anuncio.imagen}}/3" alt="Anuncios Image" style="height: 18rem;">
+          <img class="card-img-top" *ngIf="anuncio.imagen"
+            src="http://gamma-link.software:9000/images/getImage/{{anuncio.imagen}}/3" alt="Anuncios Image"
+            style="height: 18rem;">
           <div class="card-body">
             <h3 class="card-title">{{anuncio.nombre}}</h3>
             <p class="card-text">{{anuncio.descripcion}}</p>
@@ -31,7 +34,8 @@
               <i class="fas fa-arrow-up"></i> Publicar
             </button>
 
-            <button type="button" *ngIf="anuncio.estado == 1 " class="btn btn-warning ml-4" (click)="darDeBaja(anuncio)">
+            <button type="button" *ngIf="anuncio.estado == 1 " class="btn btn-warning ml-4"
+              (click)="darDeBaja(anuncio)">
               <i class="fas fa-arrow-down"></i> Dar baja
             </button>
 
