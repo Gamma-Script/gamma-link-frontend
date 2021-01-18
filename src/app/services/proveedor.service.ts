@@ -11,8 +11,7 @@ import { Departamento } from '../models/departamento';
 })
 export class ProveedorService {
 
-  //private url: string = `${urlBase}/providers`;
-  private url: string = `http://localhost:8000/api/proveedores`;
+  private url: string = `${urlBase}/providers`;
   constructor(
     private http: HttpClient
   ) {

@@ -1,4 +1,3 @@
 import { ProductoCotizado } from './ProductoCotizado';
 
-export let ProductosCotizados: ProductoCotizado[] = [
-];
+export let ProductosCotizados: ProductoCotizado[] = [];

@@ -27,7 +27,6 @@ export class LogoutButtonComponent implements OnInit {
           this.usuario = new Usuario(
             null, profile.email, null, profile.picture,'','',''
           );
-
           this.userService.getUser(this.usuario.email).subscribe({
             next: (data) => {
               if(data.proveedor) localStorage.setItem('proveedor', JSON.stringify(data.proveedor));
