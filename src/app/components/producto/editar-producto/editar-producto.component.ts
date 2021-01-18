@@ -19,7 +19,7 @@ declare var jQuery: any;
 })
 export class EditarProductoComponent implements OnInit {
 
-  @Input() producto: Producto = new Producto(0, '', 0, 0, '', 0, '');
+  @Input() producto: Producto;
   @Output() editEmit = new EventEmitter();
   proveedor = JSON.parse(localStorage.getItem('proveedor'));
   categorias: Categoria[] = [];
@@ -55,7 +55,6 @@ export class EditarProductoComponent implements OnInit {
   };
 
   constructor(
-    private router: Router,
     private fb: FormBuilder,
     private productoService: ProductoService,
     private categoriaService: CategoriasService,
@@ -82,18 +81,18 @@ export class EditarProductoComponent implements OnInit {
     this.checkForm = this.fb.group({
       nombre: [this.producto.nombre, Validators.required],
       descripcion: [this.producto.descripcion, Validators.required],
-      precio: [this.producto.precio, [Validators.min(1), Validators.required]],
+      precio: [this.producto.precio, [Validators.min(0.00), Validators.required]],
       marca: [this.producto.marca_id],
       categoria: [this.producto.categoria_id]
     });
 
-    this.categoriaService.getCategoriasByProvider(this.proveedor.id).subscribe({
-      next: (categorias) => this.categorias = categorias,
-      error: (e) => console.log(e)
-    });
-
     this.productoService.getMarcas().subscribe({
       next: (marcas) => this.marcas = marcas,
+      error: (e) => console.log(e)
+    });
+    
+    this.categoriaService.getCategoriasByProvider(this.proveedor.id).subscribe({
+      next: (categorias) => this.categorias = categorias,
       error: (e) => console.log(e)
     });
   }
@@ -101,17 +100,13 @@ export class EditarProductoComponent implements OnInit {
 
   //metodo para controlar los datos ingresados en el formulario
   onSubmit(data) {
-    let editProducto: Producto = new Producto(
-      this.producto.id,
-      data.nombre,
-      data.marca,
-      data.categoria,
-      data.descripcion,
-      data.precio,
-      this.producto.imagen
-    );
-
-    this.productoService.updateProducto(editProducto).subscribe({
+    this.producto.id = this.producto.id;
+    this.producto.nombre =  data.nombre;
+    this.producto.marca_id =  data.marca;
+    this.producto.categoria_id =  data.categoria;
+    this.producto.descripcion =  data.descripcion;
+    this.producto.precio = data.precio;
+    this.productoService.updateProducto(this.producto).subscribe({
       next: (data) => {
         (function ($) {
           "use strict";
@@ -127,7 +122,6 @@ export class EditarProductoComponent implements OnInit {
 
         this.editEmit.emit();
         this.clear();
-
       }
     });
   }

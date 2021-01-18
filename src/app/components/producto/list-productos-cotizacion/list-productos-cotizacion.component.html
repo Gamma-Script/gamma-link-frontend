@@ -14,8 +14,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let pc of productoC">
-        <th scope="row"><img src={{pc.producto.imagen}} alt="imagen" width="100"></th>
-        <td> {{ pc.producto.name }} </td>
+        <th scope="row"><img  src="http://gamma-link.software:9000/images/getImage/{{pc.producto.imagen}}/1" alt="imagen" width="100"></th>
+        <td> {{ pc.producto.nombre }} </td>
         <td> {{ pc.cantidad }} </td>
         <td> {{ pc.precioTotal | money }} </td>
     </tr>
@@ -32,8 +32,8 @@
        </thead>
        <tbody>
          <tr *ngFor="let pc of productoC">
-           <th scope="row"><img  src="http://gamma-link.software:9000/images/getImage/{{pc.imagen}}/1" alt="imagen" width="100"></th>
-           <td> {{ pc.producto.name }} </td>
+           <th scope="row"><img  src="http://gamma-link.software:9000/images/getImage/{{pc.producto.imagen}}/1" alt="imagen" width="100"></th>
+           <td> {{ pc.producto.nombre }} </td>
            <td> {{ pc.cantidad }} </td>
            <td> {{ pc.precioTotal | money }} </td>
        </tr>

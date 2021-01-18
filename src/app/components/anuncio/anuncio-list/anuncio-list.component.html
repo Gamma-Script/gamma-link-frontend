@@ -7,7 +7,7 @@
           <h3>Anuncios registrados</h3>
         </div>
         <div class="col-md-3">
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newUserModal"><i
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newUserModal" *ngIf="proveedor"><i
               class="far fa-plus-square"></i> Agregar anuncio</button>
         </div>
       </div>
@@ -25,7 +25,7 @@
             <span class="badge badge-secondary">Fecha baja: {{anuncio.fecha_publicacion}}</span>
             <span class="badge badge-secondary ml-4">Fecha pub.: {{anuncio.fecha_baja}}</span>
           </div>
-          <div class="card-footer text-right">
+          <div class="card-footer text-right" *ngIf="proveedor">
             <button type="button" class="btn btn-primary ml-4" (click)="getAnuncio(anuncio.id)">
               <i class="far fa-edit"></i> Editar {{anuncio.idAnuncio}}
             </button>
@@ -51,5 +51,5 @@
   </div>
 </div>
 
-<ng-template appDynamic></ng-template>
-<app-anuncio-new (eventEmitter)="getAnuncios($event)"></app-anuncio-new>
+<ng-template appDynamic *ngIf="proveedor"></ng-template>
+<app-anuncio-new (eventEmitter)="getAnuncios($event)" *ngIf="proveedor"></app-anuncio-new>

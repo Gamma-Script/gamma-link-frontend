@@ -98,7 +98,5 @@ export class CrearCategoriaComponent implements OnInit {
     this.categoria.imagen = datos.body.image;
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
 }

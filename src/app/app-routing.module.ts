@@ -18,7 +18,6 @@ import { AnuncioEditComponent } from './components/anuncio/anuncio-edit/anuncio-
 import { EditarCategoriaComponent } from './components/categorias/editar-categoria/editar-categoria.component';
 import { CrearCategoriaComponent } from './components/categorias/crear-categoria/crear-categoria.component';
 import { DeshabilitarCategoriaComponent } from './components/categorias/deshabilitar-categoria/deshabilitar-categoria.component';
-import { DeshabilitarProductoComponent } from './components/producto/deshabilitar-producto/deshabilitar-producto.component';
 import { AnuncioDeleteComponent } from './components/anuncio/anuncio-delete/anuncio-delete.component';
 import { LoginComponent } from './components/login/login.component';
 import { ListadoProveedorComponent } from './components/proveedores/listado-proveedor/listado-proveedor.component';
@@ -36,7 +35,6 @@ const routes: Routes = [
   { path: 'editar-producto', component: EditarProductoComponent },
   { path: 'agregar-producto', component: CrearProductoComponent },
   { path: 'deshabilitar-categoria', component: DeshabilitarCategoriaComponent },
-  { path: 'deshabilitar-producto', component: DeshabilitarProductoComponent },
   { path: 'anuncio-delete', component: AnuncioDeleteComponent },
   {
     path: 'content', component: CuentaContainerComponent

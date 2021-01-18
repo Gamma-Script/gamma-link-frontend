@@ -27,12 +27,20 @@ export class ProductoService {
     return this.http.get<Producto[]>(`${this.url}`, { headers: headers });
   }
 
-  getProductosByProvider(idProveedor){
+  getProductosByProvider(idProveedor):Observable<Producto[]> {
     let headers = new HttpHeaders({
       'Authorization': '',
       'Content-type': 'application/json'
     });
     return this.http.get<Producto[]>(`${this.url}/proveedor/${idProveedor}`, { headers: headers });
+  }
+
+  getProductosByFilter(data):Observable<Producto[]> {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+    return this.http.get<Producto[]>(`${this.url}/filtrados/${data.marca}/${data.categoria}/${data.precio}`, { headers: headers });
   }
 
   getProducto(ident: string) {
@@ -44,7 +52,7 @@ export class ProductoService {
     return this.http.get<Producto>(`${this.url}/${ident}`, { headers: headers });
   }
 
-  getMarcas():Observable<Marca[]>{
+  getMarcas(): Observable<Marca[]> {
     let headers = new HttpHeaders({
       'Authorization': '',
       'Content-type': 'application/json'
@@ -53,18 +61,38 @@ export class ProductoService {
     return this.http.get<Marca[]>(`${this.url}/marcas`, { headers: headers });
   }
 
-  addProducto(producto: Producto): Observable<Producto> {
-    return this.http.post<Producto>(`${this.url}`, producto);
+  findProductsByName(nombre):Observable<Producto[]>{
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+    return this.http.get<Producto[]>(`${this.url}/buscar/${nombre}`, { headers: headers });
   }
 
-  //metodo para actualizar el producto
+  addProducto(producto: Producto): Observable<any> {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+
+    return this.http.post(`${this.url}`, producto, { headers: headers });
+  }
+
   updateProducto(producto: Producto): Observable<any> {
     let headers = new HttpHeaders({
       'Authorization': '',
       'Content-type': 'application/json'
     });
 
-    return this.http.put(`${this.url}/${producto.id}`, producto, {headers:headers});
+    return this.http.put(`${this.url}/${producto.id}`, producto, { headers: headers });
   }
 
+  deleteProducto(id) {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+
+    return this.http.delete(`${this.url}/${id}`, { headers: headers });
+  }
 }

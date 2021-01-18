@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NotificationsService } from 'angular2-notifications';
-import Swal from 'sweetalert2';
+import { NotificationsService } from 'angular2-notifications'
 import { CotizacionService } from '../../../services/cotizacion.service';
 import { Producto } from '../../../models/producto';
+import Swal from 'sweetalert2';
+import { $ } from 'protractor';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-form-productos-cotizacion',
@@ -35,24 +37,18 @@ export class FormProductosCotizacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkForm = this.fBuil.group({
-    cantidad: [0, [Validators.required,Validators.pattern('^([1-9]|[1-2][0-9]|[0-2][1-9])$')]]
+    cantidad: [0, [Validators.required, Validators.pattern('^([1-9]|[1-2][0-9]|[0-2][1-9])$')]]
     });
   }
 
-  //metodo para mostrar el errror en forma de ventana
-  onError(){
-    Swal.fire({
-      position: 'center',
-      title: 'Error!',
-      text: 'Ha ingresado datos erróneos en el campo para el ingreso de la cantidad de productos a agregar a la cotización, Por favor intente de nuevo.',
-      icon: 'error',
-      showConfirmButton: true
-    })
-  }
 
   //metodopara mostrara el mensaje de exito
   onSuccess(){
     this.nService.success('', 'Articulos agregados a cotización', this.options);
+    (function ($) {
+      "use strict";
+      $('#cotizacionModal').modal('hide');
+    })(jQuery);
   }
 
   //metodo para obtener los errores de validacion
@@ -62,7 +58,6 @@ export class FormProductosCotizacionComponent implements OnInit {
   onSubmit(data){
     this.submitted = true;
     if (this.checkForm.invalid) {
-      this.onError();
       return;
     }
     else{

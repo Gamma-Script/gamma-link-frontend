@@ -29,7 +29,7 @@ export class AnuncioService {
 
     if(idProveedor)return this.http.get<Anuncio[]>(`${this.urlProveedor}/${idProveedor}/anuncios`, { headers: headers });
 
-    return this.http.get<Anuncio[]>(`${urlBase}/${idProveedor}/anuncios`, { headers: headers });
+    return this.http.get<Anuncio[]>(`${this.url}`, { headers: headers });
     
   }
 

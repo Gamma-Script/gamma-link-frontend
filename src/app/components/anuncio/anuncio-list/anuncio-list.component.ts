@@ -20,6 +20,9 @@ export class AnuncioListComponent implements OnInit {
 
   anuncios: Anuncio[] = [];
   componentRef: ComponentRef<any> = null;
+  cliente = JSON.parse(localStorage.getItem('cliente'));
+  proveedor = JSON.parse(localStorage.getItem('proveedor'));
+
 
   constructor(
     private anuncioService: AnuncioService,
@@ -118,10 +121,17 @@ export class AnuncioListComponent implements OnInit {
   }
 
   getAnuncios(data?) {
-    let proveedor = JSON.parse(localStorage.getItem('proveedor'));
-    this.anuncioService.getAnuncios(proveedor.id).subscribe({
+    if(this.proveedor){
+      this.anuncioService.getAnuncios(this.proveedor.id).subscribe({
+        next: (list) => {
+          if (this.componentRef != null) this.componentRef.instance.anunciosList = null;
+          this.anuncios = list;
+        },
+        error: (e) => console.log(e)
+      });
+    }
+    this.anuncioService.getAnuncios().subscribe({
       next: (list) => {
-        if (this.componentRef != null) this.componentRef.instance.anunciosList = null;
         this.anuncios = list;
       },
       error: (e) => console.log(e)

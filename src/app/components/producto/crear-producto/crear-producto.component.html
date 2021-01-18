@@ -1,45 +1,83 @@
-<div class="card col-md-12">
-  <div class="card-header">
-    Nuevo Producto
-  </div>
-  <div class="card-body">
-    <form [formGroup]="checkForm" (ngSubmit)="onSubmit(checkForm.value)">
-      <div class="form-group">
-        <div class="form-group col-md-6">
-          <label for="nombre">Nombre:</label>
-          <input type="text" formControlName="nombre" class="form-control" id="nombre"
-            [ngClass]="{ 'is-invalid' : submitted && name.nombre.errors }">
-          <div *ngIf="submitted && name.nombre.errors" class="invalid-feedback">
-            <div *ngIf="name.nombre.errors.required"> El campo es requerido</div>
+<div class="modal fade" id="agregarProducto" data-backdrop="static" tabindex="-1" aria-labelledby="agregarProducto"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clear()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form [formGroup]="checkFormCreate">
+        <div class="modal-body">
+          <div class="form-group row">
+            <div class="col-4">
+              <label for="nombre">Nombre:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" formControlName="nombre" class="form-control" id="nombre">
+              <small *ngIf="checkFormCreate.controls.nombre.touched && checkFormCreate.controls.nombre.invalid"
+                class="ml-2 text-danger">Nombre requerido</small>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-4">
+              <label for="descripcion">Descripción:</label>
+            </div>
+            <div class="col-8">
+              <textarea type="text" formControlName="descripcion" class="form-control" id="descripcion"></textarea>
+              <small
+                *ngIf="checkFormCreate.controls.descripcion.touched && checkFormCreate.controls.descripcion.invalid"
+                class="ml-2 text-danger">Descripcion requerida</small>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-4">
+              <label for="precio">Precio:</label>
+            </div>
+            <div class="col-8">
+              <input type="number" formControlName="precio" class="form-control" id="precio" placeholder="0.00">
+              <small *ngIf="checkFormCreate.controls.precio.touched && checkFormCreate.controls.precio.invalid"
+                class="ml-2 text-danger">Precio requerido y mayor a 0.00</small>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-4">
+              <label for="marca">Marca:</label>
+            </div>
+            <div class="col-8">
+              <select id="marca" formControlName="marca" class="form-control">
+                <option *ngFor="let marca of marcas" value="{{marca.id}}" [selected]=" marca.id == producto.marca_id">
+                  {{marca.nombre}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-4">
+              <label for="categoria">Categoría:</label>
+            </div>
+            <div class="col-8">
+              <select id="categoria" formControlName="categoria" class="form-control">
+                <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="container-fluid mb-4 text-right ml-2 mt-2">
+            <angular-file-uploader #fileUpload2 [config]="afuConfig" (ApiResponse)="imageUpload($event)">
+            </angular-file-uploader>
+            <img src="http://gamma-link.software:9000/images/getImage/{{producto.imagen}}/1" *ngIf="producto.imagen"
+              alt="" class="rounded mx-auto d-block mt-4" style="height: 10rem;">
           </div>
         </div>
-        <div class="form-group col-md-6">
-          <label for="descripcion">Descripción:</label>
-          <input type="text" formControlName="descripcion" class="form-control" id="descripcion">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger m-3" data-dismiss="modal" (click)="clear()">Cancelar</button>
+          <button type="submit" class="btn btn-success m-3" [disabled]="!checkFormCreate.valid"
+            (click)="onSubmit(checkFormCreate.value)">Crear
+            Producto</button>
         </div>
-      </div>
-      <div class="form-group col-md-3">
-        <label for="precio">Precio:</label>
-        <input type="number" formControlName="precio" class="form-control" id="precio" placeholder="0"
-          [ngClass]="{ 'is-invalid' : submitted && price.precio.errors }">
-        <div *ngIf="submitted && price.precio.errors" class="invalid-feedback">
-          <div *ngIf="price.precio.errors.min">La cantidad tiene que ser mayor o igual a 0.00</div>
-        </div>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="marca">Marca:</label>
-        <select id="marca" formControlName="marca" class="form-control">
-          <option>...</option>
-        </select>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="categoria">Categoría:</label>
-        <select id="categoria" formControlName="categoria" class="form-control" value="">
-          <option>a</option>
-        </select>
-      </div>
-      <button type="button" class="btn btn-danger m-3" (click)="cancelar()">Cancelar</button>
-      <button type="submit" class="btn btn-success m-3">Guardar</button>
-    </form>
+      </form>
+
+    </div>
   </div>
 </div>

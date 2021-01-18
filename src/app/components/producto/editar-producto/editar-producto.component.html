@@ -1,4 +1,5 @@
-<div class="modal fade" id="editarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editarProducto" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,7 +9,7 @@
         </button>
       </div>
 
-      <form [formGroup]="checkForm" (ngSubmit)="onSubmit(checkForm.value)">
+      <form [formGroup]="checkForm">
         <div class="modal-body">
           <div class="form-group row">
             <div class="col-4">
@@ -25,7 +26,7 @@
               <label for="descripcion">Descripción:</label>
             </div>
             <div class="col-8">
-              <input type="text" formControlName="descripcion" class="form-control" id="descripcion">
+              <textarea type="text" formControlName="descripcion" class="form-control" id="descripcion"></textarea>
               <small *ngIf="checkForm.controls.descripcion.touched && checkForm.controls.descripcion.invalid"
                 class="ml-2 text-danger">Descripcion requerida</small>
             </div>
@@ -35,7 +36,7 @@
               <label for="precio">Precio:</label>
             </div>
             <div class="col-8">
-              <input type="number" formControlName="precio" class="form-control" id="precio" placeholder="0">
+              <input type="number" formControlName="precio" class="form-control" id="precio" placeholder="0.00">
               <small *ngIf="checkForm.controls.precio.touched && checkForm.controls.precio.invalid"
                 class="ml-2 text-danger">Precio requerido y mayor a 0.00</small>
             </div>
@@ -46,7 +47,7 @@
             </div>
             <div class="col-8">
               <select id="marca" formControlName="marca" class="form-control">
-                <option *ngFor="let marca of marcas" value="{{marca.id}}" [selected]="marca.id == producto.marca_id">
+                <option *ngFor="let marca of marcas" value="{{marca.id}}" [selected]="marca.id === producto.marca_id">
                   {{marca.nombre}}</option>
               </select>
             </div>
@@ -65,13 +66,14 @@
           <div class="container-fluid mb-4 text-right ml-2 mt-2">
             <angular-file-uploader #fileUpload1 [config]="afuConfig" (ApiResponse)="imageUpload($event)">
             </angular-file-uploader>
-            <img src="http://gamma-link.software:9000/images/getImage/{{producto.imagen}}/1"
-              *ngIf="producto.imagen" alt="" class="rounded mx-auto d-block mt-4" style="height: 10rem;">
+            <img src="http://gamma-link.software:9000/images/getImage/{{producto.imagen}}/1" *ngIf="producto.imagen"
+              alt="" class="rounded mx-auto d-block mt-4" style="height: 10rem;">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger m-3" data-dismiss="modal" (click)="clear()">Cancelar</button>
-          <button type="submit" class="btn btn-success m-3" [disabled]="!checkForm.valid">Actualizar Producto</button>
+          <button type="button" class="btn btn-success m-3" (click)="onSubmit(checkForm.value)"
+            [disabled]="!checkForm.valid">Actualizar Producto</button>
         </div>
       </form>
 
