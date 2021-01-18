@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Cliente } from 'src/app/models/Cliente';
+import { Cliente } from 'src/app/models/cliente';
 import { Proveedor } from 'src/app/models/proveedor';
 import { Usuario } from 'src/app/models/usuario';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -56,7 +56,10 @@ export class CuentaFormComponent implements OnInit {
           0,
           data.correo,
           data.contraseña,
-          data.tipo
+          data.tipo,
+          '',
+          '',
+          ''
         );
 
       console.log(uNew);
@@ -66,8 +69,7 @@ export class CuentaFormComponent implements OnInit {
       if (data.tipo == "Cliente") {
         let cNew = new Cliente
           (
-            "",
-            uNew,
+            0,
             data.nombre
           )
         this.clienteService.addCliente(cNew);

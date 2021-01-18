@@ -1,3 +1,5 @@
+import { Usuario } from "./usuario";
+
 export class Proveedor {
 
     constructor(
@@ -5,6 +7,7 @@ export class Proveedor {
         public user_id: number,
         public nombre: string,
         public imagen: string,
-        public descripcion: string
+        public descripcion: string,
+        public usuario?: Usuario
     ) {}
 }

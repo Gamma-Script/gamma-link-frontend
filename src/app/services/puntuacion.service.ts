@@ -10,8 +10,8 @@ import { urlBase } from './global';
 })
 export class PuntuacionService {
 
-  private url: string = `${urlBase}/providers`;
-
+  //private url: string = `${urlBase}/providers`;
+  private url: string = `http://localhost:8000/api/proveedores`;
   constructor(
     private http: HttpClient
   ) { }

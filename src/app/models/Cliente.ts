@@ -2,9 +2,9 @@ import { Usuario } from './usuario';
 
 export class Cliente {
     constructor(
-        public idCliente: String = "",
-        public usuario: Usuario,
-        public nombre: string
+        public id: number, 
+        public usuario_id: number,
+        public usuario?: Usuario, 
     ) { }
 
 }

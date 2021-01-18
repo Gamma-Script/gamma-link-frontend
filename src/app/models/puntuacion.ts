@@ -1,4 +1,4 @@
-import { ClienteRegistrado } from './cliente-registrado';
+import { Cliente } from './cliente';
 import { Proveedor } from './proveedor';
 
 export class Puntuacion {
@@ -8,7 +8,8 @@ export class Puntuacion {
         public cliente_id: number,
         public comentario: string,
         public calificacion: number,
-        public created_at?: string
+        public created_at?: string,
+        public cliente?: Cliente
     ) {
 
     }

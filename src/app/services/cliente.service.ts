@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Cliente } from '../models/Cliente';
+import { Cliente } from '../models/cliente';
 import { urlBase } from './global';
 
 @Injectable({

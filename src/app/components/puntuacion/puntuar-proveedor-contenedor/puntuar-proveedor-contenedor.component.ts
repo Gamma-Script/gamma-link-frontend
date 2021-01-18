@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Proveedor } from 'src/app/models/proveedor';
 import { Puntuacion } from 'src/app/models/puntuacion';
+import { Usuario } from 'src/app/models/usuario';
 import { ProveedorService } from '../../../services/proveedor.service';
 import { PuntuacionService } from '../../../services/puntuacion.service';
 
@@ -11,8 +12,8 @@ import { PuntuacionService } from '../../../services/puntuacion.service';
   styleUrls: ['./puntuar-proveedor-contenedor.component.css']
 })
 export class PuntuarProveedorContenedorComponent implements OnInit {
-  proveedor: Proveedor;
-  puntuaciones: Puntuacion[];
+  proveedor: Proveedor = new Proveedor(0,0,'','','', new Usuario(0,'','',0,'','',''));
+  puntuaciones: Puntuacion[] = [];
   id = this.activateRoute.snapshot.paramMap.get("id");
 
   constructor(
@@ -35,7 +36,7 @@ export class PuntuarProveedorContenedorComponent implements OnInit {
   getPuntuaciones(data?) {
     this.puntuacionService.getPuntuaciones(this.id).subscribe({
       next: (puntuaciones) => {
-        this.puntuaciones = puntuaciones;
+        this.puntuaciones = puntuaciones;        
       }
     });
   }

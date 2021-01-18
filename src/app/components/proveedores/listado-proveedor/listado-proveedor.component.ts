@@ -11,7 +11,7 @@ export class ListadoProveedorComponent implements OnInit {
 
   cliente = JSON.parse(localStorage.getItem('cliente'));
   proveedor = JSON.parse(localStorage.getItem('proveedor'));
-  proveedores: Proveedor[];
+  proveedores: Proveedor[] = [];
 
   constructor(
     private proveedorService: ProveedorService
@@ -21,10 +21,20 @@ export class ListadoProveedorComponent implements OnInit {
     this.getProveedores();
   }
 
-  getProveedoresFiltro(data?) {
-    if (data.deptoId == 0 && data.rating == 0) this.getProveedores();
+  getProveedoresRaiting(data) {
+    if (data.rating == 0) this.getProveedores();
     else {
-      this.proveedorService.getProveedoresFiltro(data).subscribe({
+      this.proveedorService.getProveedoresPuntuacion(data.rating).subscribe({
+        next: (proveedores) => this.proveedores = proveedores,
+        error: (e) => console.log(e)
+      });
+    }
+  }
+
+  getProveedoresUbicacion(data) {
+    if (data.deptoId == 0) this.getProveedores();
+    else {
+      this.proveedorService.getProveedoresUbicacion(data.deptoId).subscribe({
         next: (proveedores) => this.proveedores = proveedores,
         error: (e) => console.log(e)
       });
@@ -33,8 +43,20 @@ export class ListadoProveedorComponent implements OnInit {
 
   getProveedores() {
     this.proveedorService.getProveedores().subscribe({
-      next: (proveedores) => this.proveedores = proveedores,
+      next: (proveedores) => {
+        this.proveedores = proveedores;
+      },
       error: (e) => console.log(e)
     });
+  }
+
+  getProveedoresBusqueda(data) {
+    if (data) {
+      this.proveedorService.findProviders(data).subscribe({
+        next: (proveedores) => this.proveedores = proveedores
+      });
+    }else{
+      this.getProveedores();
+    }
   }
 }

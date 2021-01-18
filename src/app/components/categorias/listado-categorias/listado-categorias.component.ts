@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class ListadoCategoriasComponent implements OnInit {
 
-  categorias: Categoria[];
+  categorias: Categoria[] = [];
   nombreBuscador: string = '';
   categoria: Categoria = new Categoria(0, null, '', '', '', 0);
 

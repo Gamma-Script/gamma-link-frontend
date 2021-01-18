@@ -4,14 +4,15 @@ import { Proveedor } from '../models/proveedor';
 import { urlBase } from './global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Departamento } from '../models/departamento';
 
 @Injectable({
   providedIn: 'any'
 })
 export class ProveedorService {
 
-  private url: string = `${urlBase}/providers`;
-
+  //private url: string = `${urlBase}/providers`;
+  private url: string = `http://localhost:8000/api/proveedores`;
   constructor(
     private http: HttpClient
   ) {
@@ -35,12 +36,28 @@ export class ProveedorService {
     return this.http.get<Proveedor[]>(`${this.url}`, { headers: headers });
   }
 
-  getProveedoresFiltro(values): Observable<Proveedor[]> {
+  getProveedoresPuntuacion(raiting): Observable<Proveedor[]> {
     let headers = new HttpHeaders({
       'Authorization': '',
       'Content-type': 'application/json'
     });
-    return this.http.get<Proveedor[]>(`${this.url}/buscar/puntuacion/${values.rating}`, { headers: headers });
+    return this.http.get<Proveedor[]>(`${this.url}/buscar/puntuacion/${raiting}`, { headers: headers });
+  }
+
+  getDeptos(): Observable<Departamento[]> {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+    return this.http.get<Departamento[]>(`${this.url}/departamentos`, { headers: headers });
+  }
+
+  getProveedoresUbicacion(deptoId): Observable<Proveedor[]> {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+    return this.http.get<Proveedor[]>(`${this.url}/buscar/ubicacion/${deptoId}`, { headers: headers });
   }
 
 
@@ -58,6 +75,14 @@ export class ProveedorService {
       timer: 1500
     })
 
+  }
+
+  findProviders(nombre): Observable<Proveedor[]> {
+    let headers = new HttpHeaders({
+      'Authorization': '',
+      'Content-type': 'application/json'
+    });
+    return this.http.get<Proveedor[]>(`${this.url}/buscar/${nombre}`, { headers: headers });
   }
 }
 

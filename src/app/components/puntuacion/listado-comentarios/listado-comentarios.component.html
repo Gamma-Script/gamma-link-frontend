@@ -2,7 +2,7 @@
 
     <div class="list-group-item" *ngFor="let puntuacion of puntuaciones">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{puntuacion.cliente_id}}</h5>
+        <h6 class="mb-1">{{puntuacion.cliente.usuario.nombre}} {{puntuacion.cliente.usuario.apellido}}</h6>
         <small>{{puntuacion.created_at | date}}</small>
       </div>
       <div>

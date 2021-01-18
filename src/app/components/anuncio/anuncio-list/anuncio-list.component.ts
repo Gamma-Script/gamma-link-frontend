@@ -18,7 +18,7 @@ export class AnuncioListComponent implements OnInit {
 
   @ViewChild(DynamicDirective, { static: false }) appDynamic: DynamicDirective;
 
-  anuncios: Anuncio[];
+  anuncios: Anuncio[] = [];
   componentRef: ComponentRef<any> = null;
 
   constructor(

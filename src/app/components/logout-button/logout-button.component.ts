@@ -25,7 +25,7 @@ export class LogoutButtonComponent implements OnInit {
       (profile) => {
         if( profile ){
           this.usuario = new Usuario(
-            null, profile.email, null, profile.picture
+            null, profile.email, null, profile.picture,'','',''
           );
 
           this.userService.getUser(this.usuario.email).subscribe({

@@ -1,5 +1,5 @@
 <router-outlet></router-outlet>
-<app-filtros-proveedor (eventEmiterFiltros)="getProveedoresFiltro($event)"></app-filtros-proveedor>
+<app-filtros-proveedor (eventEmiterFiltros)="getProveedoresRaiting($event)" (eventEmitUbicacion)="getProveedoresUbicacion($event)" (eventEmiterBuscar)="getProveedoresBusqueda($event)"></app-filtros-proveedor>
 <div class="row">
     <div class="col-1"></div>
     <div class="row container mt-3 mb-5 justify-content-center">
@@ -13,7 +13,7 @@
             <img src="https://www.crecenegocios.com/wp-content/uploads/2011/04/tipos-de-ventas.jpg" class="card-img-top"
                 alt="Imagen">
             <div class="card-body">
-                <h5 class="card-title">{{proveedor.nombre}}</h5>
+                <h5 class="card-title">{{proveedor.usuario.nombre}}</h5>
                 <hr>
                 <h6 class="card-subtitle mb-2 text-muted">{{proveedor.descripcion}}</h6>
             </div>
