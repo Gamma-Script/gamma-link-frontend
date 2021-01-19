@@ -10,8 +10,7 @@ import { urlBase } from './global';
 })
 export class ProductoService {
 
-  //private url: string = `${urlBase}/products`;
-  private url: string = `http://localhost:8000/api/productos`;
+  private url: string = `${urlBase}/products`;
 
 
   constructor(
