@@ -4,7 +4,8 @@ export class Cliente {
     constructor(
         public id: number, 
         public usuario_id: number,
-        public usuario?: Usuario, 
+        public usuario?: Usuario
+         
     ) { }
 
 }
